@@ -1,0 +1,48 @@
+body.rtl {
+    direction: rtl;
+    text-align: right;
+  }
+  
+  body.rtl .text-start {
+    text-align: right !important;
+  }
+  
+  body.rtl .text-end {
+    text-align: left !important;
+  }
+  
+  /* مثال برای منو یا آیتم های flex */
+  body.rtl .flex-row {
+    flex-direction: row-reverse;
+  }
+
+  .blog-details__item-right .item .search button {
+    left: 0;
+    right: auto;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  /* برای عددها */
+
+  .latin-number {
+    font-feature-settings: "lnum";
+    direction: ltr;
+    unicode-bidi: plaintext;
+  }
+
+  body.ltr .latin-number {
+    text-align: left !important;
+    direction: ltr !important;
+  }
+
+  body.ltr .contact__item-left,
+  body.ltr .contact__item-left .contact__content,
+  body.ltr .contact__item-left p,
+  body.ltr .contact__item-left h5 {
+    text-align: left !important;
+    direction: ltr !important;
+}
+  

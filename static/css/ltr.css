@@ -1,0 +1,51 @@
+body.ltr {
+    direction: ltr;
+    text-align: left;
+  }
+  
+  /* اگر متنی class text-start داشت ولی نیاز به چپ‌چین شدن داشت */
+  body.ltr .text-start {
+    text-align: left !important;
+  }
+  
+  body.ltr .text-end {
+    text-align: right !important;
+  }
+  
+  /* ردیف‌های فلکس به صورت معمولی چپ به راست */
+  body.ltr .flex-row {
+    flex-direction: row;
+  }
+  
+  /* علامت‌های چپ و راست */
+  body.ltr .fa-arrow-left,
+  body.ltr .fa-arrow-left-long,
+  body.ltr .fa-arrow-up-left {
+    transform: scaleX(-1);
+  }
+  
+  body.ltr .fa-arrow-right,
+  body.ltr .fa-arrow-right-long,
+  body.ltr .fa-arrow-up-right {
+    transform: scaleX(-1);
+  }
+  
+
+  .search {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  body.ltr .search {
+    flex-direction: row-reverse;
+  }
+  
+  .blog-details__item-right .item .search button {
+    right: 0;
+    left: auto;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
