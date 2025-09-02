@@ -47,8 +47,16 @@
                 <li><a href="/fa/index/"> صفحه اصلی</a></li>
                 <li>
                   <a href="#">محصولات <i class="fa-solid fa-angle-down"></i></a>
-                  <ul class="sub-menu" id="products-submenu">
-                    <!-- با JS پر می‌شود -->
+                  <ul class="sub-menu">
+                    {% for product in products %}
+                      <li>
+                        <a href="{% url 'product_detail' product.slug %}">
+                          {{ product.title }}
+                        </a>
+                      </li>
+                    {% empty %}
+                      <li><span>فعلاً محصولی وجود ندارد</span></li>
+                    {% endfor %}
                   </ul>
                 </li>
                 <li><a href="/fa/blog/"></a>وبلاگ</li>
@@ -371,8 +379,6 @@
     <script src="{% static 'js/gsap/ScrollSmoother.min.js' %}"></script>
     <!-- Script Js -->
     <script src="{% static 'js/script.js' %}"></script>
-    <script src="{% static 'js/config.js' %}"></script>
-    <script src="{% static 'js/i18n.js' %}"></script>
 </body>
 
 
