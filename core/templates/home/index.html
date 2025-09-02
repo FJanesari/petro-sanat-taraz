@@ -77,10 +77,24 @@
                       </a>
                     </div>
                   </div>
-                
-                  <!-- اینجا کارت‌ها به صورت داینامیک وارد می‌شن -->
-                  <div id="fanfact-cards" class="row g-4 w-100 mt-4"></div>
-                </div>
+
+                    <div id="fanfact-cards" class="row g-4 w-100 mt-4">
+                        {% for card in fanfacts %}
+                            <div class="col-xl-4 col-md-6">
+                                <div class="service__item active">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <h4 class="splt-txt wow" data-splitting>
+                                            {{ card.card_title }}
+                                        </h4>
+                                    </div>
+                                    <p class="mt-20 pb-20 fs-16">
+                                        {{ card.card_content }}
+                                    </p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
               </div>
           </section>
           <!-- Fanfact area end here -->
