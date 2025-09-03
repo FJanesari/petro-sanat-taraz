@@ -18,9 +18,6 @@
 
     <div class="container">
         <div class="banner__content pb-120">
-            <h5 class="splt-txt wow" data-splitting>
-                {{ banner.title }}
-            </h5>
             <h1>
                 {{ banner.banner_title }}
             </h1>
@@ -29,13 +26,13 @@
             </p>
 
             <div class="d-flex align-items-center gap-3">
-                <a class="btn-one" href="{% url 'home:contact' %}">
+                <a class="btn-one" href="{% url 'home:contact' %}"> مشاوره رایگان
                     <span>
                         <i class="fa-regular fa-arrow-up-left arry1"></i>
                         <i class="fa-regular fa-arrow-up-left arry2"></i>
                     </span>
                 </a>
-                <a class="btn-two" href="{% url 'home:about' %}">
+                <a class="btn-two" href="{% url 'home:about' %}">بیشتر بدانید
                     <span>
                         <i class="fa-regular fa-arrow-left arry1"></i>
                         <i class="fa-regular fa-arrow-left arry2"></i>
@@ -44,11 +41,6 @@
             </div>
         </div>
 
-        <div class="brand-area pb-120">
-            <p class="mb-4">
-                {{ banner.content }}
-            </p>
-        </div>
     </div>
 </section>
 
@@ -67,9 +59,9 @@
                 <div id="fanfact-wrapper" class="row g-4">
                   <div class="col-xl-4 col-md-6">
                     <div class="section-header line-title">
-                      <h2 class="fw-600 splt-txt wow" data-splitting data-i18n="nav.fanfact"></h2>
-                      <a class="btn-one active wow fadeInUp mt-40" data-wow-delay="600ms" data-wow-duration="1500ms" href="/fa/contact/" data-i18n="btn.talk">
-                        
+                      <h2 class="fw-600 splt-txt wow" data-splitting data-i18n="nav.fanfact">چرا پترو صنعت تاراز؟</h2>
+                      <a class="btn-one active wow fadeInUp mt-40" data-wow-delay="600ms" data-wow-duration="1500ms" href="{% url 'home:contact' %}">
+                        اکنون صحبت کنیم
                         <span>
                           <i class="fa-regular fa-arrow-up-left arry1"></i>
                           <i class="fa-regular fa-arrow-up-left arry2"></i>
@@ -103,9 +95,7 @@
             <section class="story-area pt-120 pb-120">
                 <div class="container">
                     <div class="section-header-flex line-title mb-80">
-                        <h2 class="fw-600 splt-txt wow" data-splitting>مطالعه موردی و  <br> <span>داستان های موفقیت ما <img src="assets/images/shape/title-line-store.png"
-                                    alt="" loading="lazy"></span></h2>
-                        <p class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">نمونه‌های واقعی را بررسی کنید که در آن راه‌حل‌های فناوری، مشاوره و استراتژی، تجزیه و تحلیل داده‌ها، توسعه محصول و خدمات مشاوره مالی ما باعث نوآوری شده و به نتایج قابل‌توجهی دست یافته‌اند.</p>
+                        <h2 class="fw-600 splt-txt wow" data-splitting>مطالعه موردی و داستان های موفقیت ما </h2>
                     </div>
                     <div class="swiper story__slider">
                         <div class="swiper-wrapper">
@@ -123,8 +113,11 @@
                                                 class="d-flex align-items-center flex-wrap gap-3 justify-content-between mt-20">
                                                 <div>
                                                     <h3 class="mb-2"><a href="{% url 'home:about_detail' item.slug %}"></a>{{ item.post_title }}</h3>
+                                                        <p class="text-muted">
+                                                            {{ item.post_content|striptags|truncatechars:100 }}
+                                                        </p>
                                                 </div>
-                                                <div> <a class='btn-one' href='about.html'>مشاهده این مورد
+                                                <div> <a class='btn-one' href='{% url 'home:about_detail' item.slug %}'>مشاهده این مورد
                                                         <span>
                                                             <i class="fa-regular fa-arrow-up-left arry1"></i>
                                                             <i class="fa-regular fa-arrow-up-left arry2"></i>
@@ -139,7 +132,7 @@
                         </div>
                     </div>
                     <div class="story__btn mt-80">
-                        <a href="#0" class="btn-one active">جستجوی بیشتر
+                        <a href="{% url 'home:about' %}" class="btn-one active">جستجوی بیشتر
                             <span>
                                 <i class="fa-regular fa-arrow-up-left arry1"></i>
                                 <i class="fa-regular fa-arrow-up-left arry2"></i>
