@@ -5,8 +5,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
     path("", include("core.urls", namespace="home")),
-    path('product/', include("product.urls", namespace='product'))
+    path('product/', include("product.urls", namespace='product')),
+    path('blog/', include("blog.urls", namespace='blog')),
 ]
 
 if settings.DEBUG:  # فقط در حالت توسعه
