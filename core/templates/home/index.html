@@ -100,53 +100,81 @@
           <!-- Fanfact area end here -->
 
 <!-- Story Area Start -->
-<section class="story-area pt-120 pb-120">
-    <div class="container">
-      <div class="section-header-flex line-title mb-80">
-        <h2 class="fw-600 splt-txt wow" data-splitting>
-          <span data-i18n="nav.success">            
-          </span>
-        </h2>
-        <p class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms"></p>
-        <!-- <p class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
-          ما را بیشتر بشناسید.        
-        </p> -->
-      </div>
-  
-      <div class="row g-4" id="dynamic-content-wrapper">
-        <div class="swiper-wrapper">
-          <!-- اطلاعات از طریق JS بارگذاری می‌شود -->
-        </div>
-        <div class="swiper-scrollbar"></div>
-      </div>
-  
-      <div class="story__btn mt-80">
-        <a href="/fa/about/" class="btn-one active" data-i18n="btn.read_more">
-          <span>
-            <i class="fa-regular fa-arrow-up-left arry1"></i>
-            <i class="fa-regular fa-arrow-up-left arry2"></i>
-          </span>
-        </a>
-      </div>
-    </div>
-  </section>
-  <!-- Story Area End -->
+            <section class="story-area pt-120 pb-120">
+                <div class="container">
+                    <div class="section-header-flex line-title mb-80">
+                        <h2 class="fw-600 splt-txt wow" data-splitting>مطالعه موردی و  <br> <span>داستان های موفقیت ما <img src="assets/images/shape/title-line-store.png"
+                                    alt=""></span></h2>
+                        <p class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">نمونه‌های واقعی را بررسی کنید که در آن راه‌حل‌های فناوری، مشاوره و استراتژی، تجزیه و تحلیل داده‌ها، توسعه محصول و خدمات مشاوره مالی ما باعث نوآوری شده و به نتایج قابل‌توجهی دست یافته‌اند.</p>
+                    </div>
+                    <div class="swiper story__slider">
+                        <div class="swiper-wrapper">
+                                <div class="row g-5 align-items-star">
+                                    {% for item in about_us_posts %}
+                                    <div class="col-lg-6">
+
+                                        <div class="story__item">
+                                            {% if item.image %}
+                                            <div class="image">
+                                                <img src="{{ item.image.url }}" alt="{{ item.post_title }}">
+                                            </div>
+                                            {% endif %}
+                                            <div
+                                                class="d-flex align-items-center flex-wrap gap-3 justify-content-between mt-20">
+                                                <div>
+                                                    <h3 class="mb-2"><a href="{% url 'home:about_detail' item.slug %}"></a>{{ item.post_title }}</h3>
+                                                </div>
+                                                <div> <a class='btn-one' href='about.html'>مشاهده این مورد
+                                                        <span>
+                                                            <i class="fa-regular fa-arrow-up-left arry1"></i>
+                                                            <i class="fa-regular fa-arrow-up-left arry2"></i>
+                                                        </span>
+                                                    </a></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                        </div>
+                    </div>
+                    <div class="story__btn mt-80">
+                        <a href="#0" class="btn-one active">جستجوی بیشتر
+                            <span>
+                                <i class="fa-regular fa-arrow-up-left arry1"></i>
+                                <i class="fa-regular fa-arrow-up-left arry2"></i>
+                            </span>
+                        </a>
+                        <div class="story__scrollbar">
+                            <div class="position-relative">
+                                <div class="swiper-scrollbar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>  <!-- Story Area End -->
   
             <!-- Testimonial area start here -->
             <section class="testimonial-area pb-120">
-                <div class="container">
-                    <div class="row g-4 justify-content-between">
-                        <div class="col-lg-5">
-                            <div class="testimonial__item-left">
-                                <h2 class="fw-600 wow splt-txt" data-splitting> </h2>
-                                <div class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
-                                    <p class="award-title">
-                                    
-                                    </p>
-                                </div>
-                            </div>
+              <div class="container">
+                <div class="row g-4 justify-content-between">
+                  <div class="col-lg-5">
+                    <div class="testimonial__item-left">
+                      {% if banner %}
+                        <h2 class="fw-600 wow splt-txt" data-splitting>
+                          {{ banner.title }}
+                        </h2>
+                        <div class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
+                          <p class="award-title">
+                            {{ banner.content }}
+                          </p>
                         </div>
-                      </section>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
                           
 
             <!-- Blog area start here -->
