@@ -12,7 +12,7 @@
                 display: flex; align-items: center; justify-content: center;
                 transform: translateX(-350px);">
         {% if banner.image %}
-            <img src="{{ banner.image.url }}" alt="{{ banner.banner_title }}">
+            <img src="{{ banner.image.url }}" alt="{{ banner.banner_title }}" loading="lazy">
         {% endif %}
     </div>
 
@@ -104,7 +104,7 @@
                 <div class="container">
                     <div class="section-header-flex line-title mb-80">
                         <h2 class="fw-600 splt-txt wow" data-splitting>مطالعه موردی و  <br> <span>داستان های موفقیت ما <img src="assets/images/shape/title-line-store.png"
-                                    alt=""></span></h2>
+                                    alt="" loading="lazy"></span></h2>
                         <p class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">نمونه‌های واقعی را بررسی کنید که در آن راه‌حل‌های فناوری، مشاوره و استراتژی، تجزیه و تحلیل داده‌ها، توسعه محصول و خدمات مشاوره مالی ما باعث نوآوری شده و به نتایج قابل‌توجهی دست یافته‌اند.</p>
                     </div>
                     <div class="swiper story__slider">
@@ -116,7 +116,7 @@
                                         <div class="story__item">
                                             {% if item.image %}
                                             <div class="image">
-                                                <img src="{{ item.image.url }}" alt="{{ item.post_title }}">
+                                                <img src="{{ item.image.url }}" alt="{{ item.post_title }}" loading="lazy">
                                             </div>
                                             {% endif %}
                                             <div
@@ -181,9 +181,9 @@
             <section class="blog-area pb-120">
                 <div class="container">
                     <div class="section-header-flex mb-80">
-                        <h2 class="fw-600 splt-txt wow" data-splitting data-i18n="nav.new-blog"></h2>
+                        <h2 class="fw-600 splt-txt wow" data-splitting>جدید ترین وبلاگ و اخبار ما</h2>
                         <div class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
-                            <p>
+                            <p>به مثال‌های واقعی بپردازید که در آن‌ها راه‌حل‌های فناوری،<br> مشاوره و استراتژی به کار گرفته شده اند
                             </p>
                             <div class="swiper__info justify-content-start m-0 mt-3">
                                 <button class="blog__arry-prev"><i class="fa-regular fa-arrow-right-long"></i></button>
@@ -193,8 +193,22 @@
                         </div>
                     </div>
                     <div class="swiper blog__slider">
-                        <div class="swiper-wrapper" id="news-section-wrapper">
-                            <!-- اطلاعات از طریق JS بارگذاری می‌شود -->
+                        <div class="swiper-wrapper">
+                            {% for item in blog %}
+                            <div class="swiper-slide">
+                                <div class="blog__item">
+                                    <div class="blog__image image">
+                                        <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+{#                                        <div class="tag">#}
+{#                                            <a href='service-details.html'>تکنولوژی</a>#}
+{#                                        </div>#}
+                                    </div>
+                                    <h4 class="mt-10 mb-20"><a class='primary-hover' href="{% url 'blog:blog_detail' item.slug %}">{{ item.title }}</a></h4>
+                                    <a class='fs-18 blog-btn text-font' href='{% url 'blog:blog_detail' item.slug %}'>ادامه مطلب <i
+                                            class="fa-light me-1 fa-arrow-left"></i></a>
+                                </div>
+                            </div>
+                        {% endfor %}
                         </div>
                     </div>
                 </div>
