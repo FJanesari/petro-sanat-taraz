@@ -42,23 +42,23 @@
                     </div>
 
                     <div class="row g-4">
-
+{% for item in product_type %}
                         <div class="col-lg-4">
-                                                                        {% for item in product_type %}
+
                             <div class="blog__item">
                                 <div class="blog__image image">
                                     <img src="{{ item.image.url }}" alt="image">
-                                    <div class="tag">
-                                        <a href='{% url 'product:product_type' item.slug %}'>{{ item.title }}</a>
-                                    </div>
+{#                                    <div class="tag">#}
+{#                                        <a href='{% url 'product:product_type' item.slug %}'>{{ item.title }}</a>#}
+{#                                    </div>#}
                                 </div>
                                 <h4 class="mt-10 mb-20"><a class='primary-hover' href='{% url 'product:product_type' item.slug %}'>{{ item.title }}</a></h4>
                                 <a class='fs-18 blog-btn text-font' href='{% url 'product:product_type' item.slug %}'>ادامه مطلب<i
                                         class="fa-light ms-1 fa-arrow-left"></i></a>
                             </div>
-                            {% endfor %}
-                        </div>
 
+                        </div>
+{% endfor %}
                     </div>
 
             <div class="pegi justify-content-center mt-60">
