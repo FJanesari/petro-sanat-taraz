@@ -61,23 +61,24 @@
 {% endfor %}
                     </div>
 
-            <div class="pegi justify-content-center mt-60">
+<div class="pegi justify-content-center mt-60">
 
-              {% if product_type.has_previous %}
-                                  <span>صفحه قبل</span>
-                <a class="prev" href="?page={{ product_type.previous_page_number }}">
-                  <i class="fa-regular fa-arrow-right"></i>
-                </a>
-              {% endif %}
+  {% if product_type.has_previous %}
+          <span>صفحه قبل</span>
+    <a class="prev" href="{% url 'product:product_detail_page' product.slug product_type.previous_page_number %}">
 
-              {% if product_type.has_next %}
-                <a class="next" href="?page={{ product_type.next_page_number }}">
-                   <i class="fa-regular fa-arrow-left"></i>
-                </a>
-                  <span>صفحه بعد</span>
-              {% endif %}
+      <i class="fa-regular fa-arrow-right"></i>
+    </a>
+  {% endif %}
 
-            </div>
+  {% if product_type.has_next %}
+    <a class="next" href="{% url 'product:product_detail_page' product.slug product_type.next_page_number %}">
+       <i class="fa-regular fa-arrow-left"></i>
+    </a><span>صفحه بعد</span>
+  {% endif %}
+
+</div>
+
 
                 </div>
             </section>
