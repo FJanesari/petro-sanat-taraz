@@ -8,7 +8,7 @@ def blog_detail(request, slug):
 
 
 def blog(request):
-    article = get_object_or_404(Article)
+    article = Article.objects.filter(is_active=True)
     blog_info = get_object_or_404(BlogInfo)
     return render(request, "blog.html", {
         "article": article,
