@@ -16,28 +16,55 @@
             <!-- Banner area end here -->
 
             <!-- Blog area start here -->
-            <section class="blog-area pb-120">
+
+    <section class="blog-area pb-120">
                 <div class="container">
                     <div class="section-header-flex mb-80">
-                        <h2 class="fw-300" id="aboutus-page-title"></h2>
+                        <h2 class="fw-300">{{ blog_info.title }}</h2>
                         <div>
-                            <p id="aboutus-page-content">
+                            <p>{{ blog_info.content }}
                             </p>
                         </div>
                     </div>
-                    <div id="articles-list" class="row g-4">
-                        
+                    <div class="row g-4">
+                    {% for item in article %}
+                        <div class="col-lg-4">
+
+                            <div class="blog__item">
+                                <div class="blog__image image">
+                                    <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+            {#                    <div class="tag">#}
+        {#                  <a href='{% url 'product:product_type' item.slug %}'>{{ item.title }}</a>#}
+        {#                             </div>#}
+                                </div>
+                                <h4 class="mt-10 mb-20"><a class='primary-hover' href='{% url 'blog:blog_detail' item.slug %}'>{{ item.title }}</a></h4>
+                                <a class='fs-18 blog-btn text-font' href='{% url 'blog:blog_detail' item.slug %}'>ادامه مطلب<i
+                                        class="fa-light ms-1 fa-arrow-left"></i></a>
+                            </div>
 
                         </div>
-                        
-                        <div class="pegi justify-content-center mt-60">
-                          <a class="prev" href="#0"><i class="fa-regular fa-arrow-right"></i></a>
-                          <div class="pegi-dots" id="pagination-container-articles"></div>
-                          <a class="next" href="#0"><i class="fa-regular fa-arrow-left"></i></a>
-                        </div>
-                        
-                        
+                        {% endfor %}
+                    </div>
+
+                    <div class="pegi justify-content-center mt-60">
+
+                    {% if article.has_previous %}
+                    <span>صفحه قبل</span>
+                    <a class="prev" href="{% url 'blog:blog_detail_page' article.slug page.previous_page_number %}">
+
+                    <i class="fa-regular fa-arrow-right"></i>
+                    </a>
+                    {% endif %}
+
+                    {% if article.has_next %}
+                     <a class="next" href="{% url 'blog:blog_detail_page' article.slug page.next_page_number %}">
+                     <i class="fa-regular fa-arrow-left"></i>
+                    </a><span>صفحه بعد</span>
+                {% endif %}
+
+            </div>
+
+
                 </div>
-            </section>
-            <!-- Blog area end here -->
+            </section>            <!-- Blog area end here -->
 {% endblock %}
