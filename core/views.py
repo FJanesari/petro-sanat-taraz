@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from product.models import Product
-from .models import HomeInfo, FanFact, AboutUsPost, Setting
+from .models import HomeInfo, FanFact, AboutUsPost, Setting, AboutUsInfo
 from blog.models import Article
 
 
@@ -26,9 +26,12 @@ def contact(request):
 
 
 def about(request):
-    return render(request, "about/about.html")
+    banner = AboutUsInfo.objects.filter(is_active=True).first()
+    return render(request, "about/about.html", {"about_us": banner})
 
 
 def about_detail(request, slug):
     post = get_object_or_404(AboutUsPost, slug=slug, is_active=True)
-    return render(request, "about/about.html", {"post": post})
+    return render(request, "about/about.html", {"post": post,
+
+                                                })
