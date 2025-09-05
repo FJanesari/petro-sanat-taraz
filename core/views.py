@@ -27,11 +27,25 @@ def contact(request):
 
 def about(request):
     banner = AboutUsInfo.objects.filter(is_active=True).first()
-    return render(request, "about/about.html", {"about_us": banner})
+    posts = AboutUsPost.objects.filter(is_active=True)
+
+    # فرض: پست پیش‌فرض (اولین پست)
+    default_post = posts.first()
+
+    return render(request, "about/about.html", {
+        "about_us": banner,
+        "post": default_post,
+        "posts": posts,
+    })
 
 
 def about_detail(request, slug):
-    post = get_object_or_404(AboutUsPost, slug=slug, is_active=True)
-    return render(request, "about/about.html", {"post": post,
+    banner = AboutUsInfo.objects.filter(is_active=True).first()
+    posts = AboutUsPost.objects.filter(is_active=True)
+    post = get_object_or_404(AboutUsPost, is_active=True, slug=slug)
 
-                                                })
+    return render(request, "about/about.html", {
+        "about_us": banner,
+        "post": post,
+        "posts": posts,
+    })
