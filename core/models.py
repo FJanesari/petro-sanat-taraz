@@ -40,6 +40,7 @@ class AboutUsInfo(TranslatableModel):
         title=models.CharField("عنوان", max_length=200, blank=True),
         content=models.TextField("محتوا", blank=True,),
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
+        meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
     )
     is_active = models.BooleanField("فعال باشد؟", default=False)
     created_at = jmodels.jDateTimeField("تاریخ ایجاد", auto_now_add=True)
@@ -77,6 +78,7 @@ class AboutUsPost(TranslatableModel):
 class ContactUsInfo(TranslatableModel):
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
+        meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
         page_title_one=models.CharField(max_length=200, verbose_name="عنوان صفحه"),
         description_one=models.TextField(blank=True, verbose_name="توضیحات صفحه"),
         page_title_two=models.CharField(max_length=200, blank=True, verbose_name="عنوان"),
@@ -125,6 +127,7 @@ class ContactMessage(models.Model):
 class HomeInfo(TranslatableModel):
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
+        meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
         banner_title=models.CharField(max_length=200, verbose_name="عنوان بنر صفحه"),
         banner_description=models.TextField(verbose_name="توضیحات بنر صفحه"),
         title=models.CharField("عنوان", max_length=200, blank=True),

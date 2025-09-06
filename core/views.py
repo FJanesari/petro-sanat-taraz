@@ -21,6 +21,8 @@ def home(request):
         "about_us_posts": about_us_posts,
         "blog": blog,
         "setting": setting,
+        "default_meta_title": banner.meta_title,
+        "default_meta_description": banner.meta_description,
     })
 
 
@@ -37,7 +39,12 @@ def contact(request):
     else:
         form = ContactForm()
 
-    return render(request, "contact/contact.html", {"contact_us": banner, "form": form})
+    return render(request, "contact/contact.html", {
+        "contact_us": banner,
+        "form": form,
+        "default_meta_title": banner.meta_title,
+        "default_meta_description": banner.meta_description,
+    })
 
 
 def about(request):
@@ -51,6 +58,8 @@ def about(request):
         "about_us": banner,
         "post": default_post,
         "posts": posts,
+        "default_meta_title": banner.meta_title,
+        "default_meta_description": banner.meta_description,
     })
 
 
@@ -63,4 +72,6 @@ def about_detail(request, slug):
         "about_us": banner,
         "post": post,
         "posts": posts,
+        "default_meta_title": banner.meta_title,
+        "default_meta_description": banner.meta_description,
     })

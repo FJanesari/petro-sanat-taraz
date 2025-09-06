@@ -54,7 +54,7 @@ class ContactUsInfoAdmin(TranslatableAdmin):
     fieldsets = (
         ("اطلاعات ترجمه‌پذیر", {
             'fields': (
-                'meta_title',
+                'meta_title', 'meta_description',
                 'page_title_one', 'description_one',
                 'page_title_two', 'description_two',
                 'address', 'phone', 'phone_two', 'phone_three', 'phone_four',
@@ -97,7 +97,7 @@ class AboutUsInfoAdmin(TranslatableAdmin):
     fieldsets = (
         ("اطلاعات ترجمه‌پذیر", {
             'fields': (
-                'meta_title',
+                'meta_title', 'meta_description',
                 'banner_title', 'banner_description',
                 'title', 'content',
             )
@@ -151,7 +151,7 @@ class HomeInfoAdmin(TranslatableAdmin):
     fieldsets = (
         ("اطلاعات ترجمه‌پذیر", {
             'fields': (
-                'meta_title',
+                'meta_title', 'meta_description',
                 'banner_title', 'banner_description',
                 'title', 'content',
             )
