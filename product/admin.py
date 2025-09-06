@@ -11,7 +11,7 @@ class ProductAdmin(TranslatableAdmin):
     fieldsets = (
         ("اطلاعات ترجمه‌پذیر", {
             'fields': (
-                'meta_title',
+                'meta_title', 'meta_description',
                 'banner_title', 'banner_description',
                 'title',
                 'description', 'price'
@@ -43,7 +43,7 @@ class ProductTypeAdmin(TranslatableAdmin):
     fieldsets = (
         ("اطلاعات ترجمه‌پذیر", {
             'fields': (
-                'meta_title',
+                'meta_title', 'meta_description',
                 'banner_title', 'banner_description',
                 'title',
                 'description'

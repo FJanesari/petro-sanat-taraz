@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
+
+{% block meta_title %}{{ type.meta_title }}{% endblock %}
+{% block meta_description %}{{ type.meta_description }}{% endblock %}
+{% block canonical %}
+  <link rel="canonical" href="{{ canonical_url }}">
+{% endblock %}
+
 {% load static %}
 
 {% block content %}

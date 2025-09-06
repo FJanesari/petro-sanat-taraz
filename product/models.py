@@ -7,7 +7,7 @@ from .signals import CleanedCKEditor5Field
 class Product(TranslatableModel):
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
-        meta_description=models.TextField(blank=True, null=True),
+        meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
         banner_title=models.CharField(max_length=200, default='محصولات پترو صنعت تاراز', verbose_name="عنوان بنر صفحه"),
         banner_description=models.TextField(blank=True, verbose_name="توضیحات بنر صفحه"),
         title=models.CharField(max_length=255, verbose_name="نام محصول"),
@@ -42,7 +42,7 @@ class ProductType(TranslatableModel):
     )
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
-        meta_description=models.TextField(blank=True, null=True),
+        meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
         banner_title=models.CharField(max_length=200, default='انواع محصولات', verbose_name="عنوان بنر صفحه"),
         banner_description=models.TextField(blank=True, verbose_name="توضیحات بنر صفحه"),
         title=models.CharField(max_length=255, verbose_name="عنوان"),
