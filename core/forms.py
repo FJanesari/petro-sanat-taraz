@@ -1,4 +1,6 @@
 from django.core.exceptions import ValidationError
+from django import forms
+from .models import ContactMessage
 
 
 class SingleActiveInstanceMixin:
@@ -19,3 +21,10 @@ class SingleActiveInstanceMixin:
                 raise ValidationError(f"فقط یک {self.model_class._meta.verbose_name} می‌تواند فعال باشد.")
 
         return cleaned_data
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactMessage
+        fields = ["full_name", "email", "phone_number", "subject", "message"]
+

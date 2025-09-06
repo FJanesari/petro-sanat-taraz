@@ -1,7 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from product.models import Product
-from .models import HomeInfo, FanFact, AboutUsPost, Setting, AboutUsInfo
+from .models import HomeInfo, FanFact, AboutUsPost, Setting, AboutUsInfo, ContactUsInfo, ContactMessage
 from blog.models import Article
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import ContactForm
 
 
 def home(request):
@@ -22,7 +25,19 @@ def home(request):
 
 
 def contact(request):
-    return render(request, "contact/contact.html")
+    banner = ContactUsInfo.objects.filter(is_active=True).first()
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "پیام شما با موفقیت ارسال شد ✅")
+            return redirect("home:contact")  # ری‌دایرکت به همون صفحه
+        else:
+            messages.error(request, "لطفاً فرم را به درستی پر کنید ❌")
+    else:
+        form = ContactForm()
+
+    return render(request, "contact/contact.html", {"contact_us": banner, "form": form})
 
 
 def about(request):
