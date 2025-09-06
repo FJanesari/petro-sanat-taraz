@@ -34,31 +34,24 @@
                         <div class="col-lg-4 order-1 order-lg-2">
                             <div class="blog-details__item-right">
                                 <div class="item mb-40">
-                                <div class="search">
-                                    <form method="get" action="">
-                                        <input type="text" name="q" placeholder="جستجو..." value="{{ query }}">
-                                        <button type="submit">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                                      
-                                </div>
-                        <div class="item mb-40">
-                            <h4>مطالب اخیر</h4>
-                            <ul id="recent-posts-list">
-                                {% for post in recent_posts %}
-                                    <li class="mb-20">
-                                        <a class="fs-18 fw-500 primary-hover"
-                                           href="{% url 'blog:blog_detail' post.slug %}">
-                                            {{ post.title }}
+                                  {% if query %}
+                                    <h4>نتایج جستجو برای "{{ query }}"</h4>
+                                  {% else %}
+                                    <h4>مطالب اخیر</h4>
+                                  {% endif %}
+
+                                  <ul id="recent-posts-list">
+                                    {% for post in recent_posts %}
+                                      <li class="mb-20">
+                                        <a class="fs-18 fw-500 primary-hover" href="{% url 'blog:blog_detail' post.slug %}">
+                                          {{ post.title }}
                                         </a>
-                                    </li>
-                                {% empty %}
-                                    <li>هیچ مقاله‌ای یافت نشد.</li>
-                                {% endfor %}
-                            </ul>
-                        </div>
+                                      </li>
+                                    {% empty %}
+                                      <li>هیچ مقاله‌ای یافت نشد.</li>
+                                    {% endfor %}
+                                  </ul>
+                                </div>
 
 
                             </div>

@@ -8,11 +8,29 @@ def blog_detail(request, slug):
     recent_posts = Article.objects.exclude(id=article.id).order_by("-created_at")[:3]
     query = request.GET.get("q")
     if query:
-        recent_posts = Article.objects.filter(title__icontains=query)[:3]
+
+        recent_posts = Article.objects.filter(title__icontains=query).exclude(id=article.id)[:3]
+    else:
+
+        recent_posts = Article.objects.exclude(id=article.id).order_by("-created_at")[:3]
     return render(request, "blog-details.html", {"article": article,
-                                                 "query": query,
                                                  "recent_posts": recent_posts,
+                                                 "query": query,
                                                  })
+
+
+# def blog_list(request):
+#     query = request.GET.get("q", "")
+#     posts = Article.objects.all().order_by("-created_at")
+#
+#     if query:
+#         posts = posts.filter(title__icontains=query)
+#
+#     return render(request, "blog.html", {
+#         "posts": posts,
+#         "query": query,
+#     })
+
 
 
 def blog(request, page=1):
