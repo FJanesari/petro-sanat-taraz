@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'parler',
     'django_ckeditor_5',
+    "django.contrib.sitemaps",
 
     'core',
     'product',

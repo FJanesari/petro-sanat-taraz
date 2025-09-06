@@ -2,6 +2,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from core.sitemaps import StaticViewSitemap, AboutUsPostSitemap, ProductSitemap, ProductTypeSitemap, ArticleSitemap
+from core.views import robots_txt
+
+sitemaps = {
+    "static": StaticViewSitemap,
+    "about_posts": AboutUsPostSitemap,
+    "products": ProductSitemap,
+    "product_types": ProductTypeSitemap,
+    "articles": ArticleSitemap,
+}
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -9,6 +20,8 @@ urlpatterns = [
     path("fa/", include("core.urls", namespace="home")),
     path('fa/', include("blog.urls", namespace='blog')),
     path('fa/product/', include("product.urls", namespace='product')),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap"),
+    path("robots.txt", robots_txt, name="robots_txt"),
 ]
 
 if settings.DEBUG:  # فقط در حالت توسعه

@@ -5,6 +5,7 @@ from blog.models import Article
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import ContactForm
+from django.http import HttpResponse
 
 
 def home(request):
@@ -75,3 +76,12 @@ def about_detail(request, slug):
         "default_meta_title": banner.meta_title,
         "default_meta_description": banner.meta_description,
     })
+
+
+def robots_txt(request):
+    body = "\n".join([
+        "User-agent: *",
+        "Disallow:",
+        f"Sitemap: {request.build_absolute_uri('/sitemap.xml')}",
+    ])
+    return HttpResponse(body, content_type="text/plain")
