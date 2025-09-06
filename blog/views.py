@@ -5,7 +5,6 @@ from django.core.paginator import Paginator
 
 def blog_detail(request, slug):
     article = get_object_or_404(Article, slug=slug)
-    recent_posts = Article.objects.exclude(id=article.id).order_by("-created_at")[:3]
     query = request.GET.get("q")
     if query:
 
@@ -16,6 +15,9 @@ def blog_detail(request, slug):
     return render(request, "blog-details.html", {"article": article,
                                                  "recent_posts": recent_posts,
                                                  "query": query,
+                                                 "default_meta_title": article.meta_title,
+                                                 "default_meta_description": article.meta_description,
+                                                 "canonical_url": article.canonical_url or request.build_absolute_uri(),
                                                  })
 
 

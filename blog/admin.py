@@ -62,7 +62,7 @@ class ArticleAdmin(TranslatableAdmin):
     fieldsets = (
         ("اطلاعات ترجمه‌پذیر", {
             'fields': (
-                'meta_title',
+                'meta_title', 'meta_description',
                 'title',
                 'content'
             )
@@ -95,7 +95,7 @@ class BlogInfoAdmin(TranslatableAdmin):
     fieldsets = (
         ("اطلاعات ترجمه‌پذیر", {
             'fields': (
-                'meta_title',
+                'meta_title', 'meta_description',
                 'banner_title', 'banner_description',
                 'title', 'content',
             )

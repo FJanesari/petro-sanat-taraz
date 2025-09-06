@@ -7,6 +7,7 @@ from .signals import CleanedCKEditor5Field
 class Article(TranslatableModel):
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
+        meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
         title=models.CharField(max_length=255, verbose_name="عنوان"),
         content=CleanedCKEditor5Field(config_name='default', blank=True, verbose_name="محتوای مقاله"),
     )
@@ -33,6 +34,7 @@ class Article(TranslatableModel):
 class BlogInfo(TranslatableModel):
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
+        meta_description=models.TextField(blank=True, null=True),
         banner_title=models.CharField(max_length=200, verbose_name="عنوان بنر صفحه"),
         banner_description=models.TextField(verbose_name="توضیحات بنر صفحه"),
         title=models.CharField("عنوان", max_length=200, blank=True),
