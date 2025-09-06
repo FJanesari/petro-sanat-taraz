@@ -34,7 +34,6 @@ def blog_detail(request, slug):
 #     })
 
 
-
 def blog(request, page=1):
     article = Article.objects.filter(is_active=True)
     blog_info = get_object_or_404(BlogInfo)
@@ -43,4 +42,6 @@ def blog(request, page=1):
     return render(request, "blog.html", {
         "article": page_obj,
         "blog_info": blog_info,
+        "default_meta_title": blog_info.meta_title,
+        "default_meta_description": blog_info.meta_description,
     })
