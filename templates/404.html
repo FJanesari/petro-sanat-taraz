@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+            <!-- Error area start here -->
+            <section class="error-area">
+                <div class="container">
+                    <div class="row g-5 align-items-center">
+                        <div class="col-lg-5">
+                            <div class="error__content">
+                                <h1>404</h1>
+                                <h2>متاسفیم! <br> صفحه یافت نشد</h2>
+                                <p>این صفحه وجود ندارد یا حذف شده است! <br>
+                                    ما پیشنهاد میکنیم به صفحه اصلی برگردید</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="error__image image">
+                                <img src="{% static 'images/error/error-image.png' %}" alt="image">
+                                <h3 class="mt-50">خطای 404!</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Error area end here -->
+
+
+{% endblock %}
