@@ -40,54 +40,56 @@
                       <!-- Case details area end here -->
           
 
-    <section class="blog-area pb-120">
-                <div class="container">
-                    <div class="section-header-flex mb-80">
-                        <h2 class="fw-300">انواع محصول</h2>
-                        <div>
+<section class="blog-area pb-120">
+    <div class="container">
+        <div class="section-header-flex mb-80">
+            <h2 class="fw-300">انواع {{ product.title }}</h2>
+            <div></div>
+        </div>
+
+        <div class="row g-4">
+            {% for item in product_type %}
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog__item">
+                        <div class="blog__image image">
+                            {% if item.image %}
+                                <a href="{% url 'product:product_type' item.slug %}">
+                                    <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                                </a>
+                            {% endif %}
                         </div>
+                        <h4 class="mt-10 mb-20">
+                            <a class="primary-hover" href="{% url 'product:product_type' item.slug %}">
+                                {{ item.title }}
+                            </a>
+                        </h4>
+                        <a class="fs-18 blog-btn text-font" href="{% url 'product:product_type' item.slug %}">
+                            ادامه مطلب <i class="fa-light ms-1 fa-arrow-left"></i>
+                        </a>
                     </div>
-
-                    <div class="row g-4">
-{% for item in product_type %}
-                        <div class="col-lg-4">
-
-                            <div class="blog__item">
-                                <div class="blog__image image">
-                                    <img src="{{ item.image.url }}" alt="image">
-{#                                    <div class="tag">#}
-{#                                        <a href='{% url 'product:product_type' item.slug %}'>{{ item.title }}</a>#}
-{#                                    </div>#}
-                                </div>
-                                <h4 class="mt-10 mb-20"><a class='primary-hover' href='{% url 'product:product_type' item.slug %}'>{{ item.title }}</a></h4>
-                                <a class='fs-18 blog-btn text-font' href='{% url 'product:product_type' item.slug %}'>ادامه مطلب<i
-                                        class="fa-light ms-1 fa-arrow-left"></i></a>
-                            </div>
-
-                        </div>
-{% endfor %}
-                    </div>
-
-<div class="pegi justify-content-center mt-60">
-
-  {% if product_type.has_previous %}
-          <span>صفحه قبل</span>
-    <a class="prev" href="{% url 'product:product_detail_page' product.slug product_type.previous_page_number %}">
-
-      <i class="fa-regular fa-arrow-right"></i>
-    </a>
-  {% endif %}
-
-  {% if product_type.has_next %}
-    <a class="next" href="{% url 'product:product_detail_page' product.slug product_type.next_page_number %}">
-       <i class="fa-regular fa-arrow-left"></i>
-    </a><span>صفحه بعد</span>
-  {% endif %}
-
-</div>
-
-
                 </div>
-            </section>
+            {% empty %}
+                <p class="text-center">هیچ نوعی برای این محصول ثبت نشده است.</p>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        <div class="pegi justify-content-center mt-60">
+            {% if product_type.has_previous %}
+                <a class="prev" href="{% url 'product:product_detail_page' product.slug product_type.previous_page_number %}">
+                    <i class="fa-regular fa-arrow-right"></i>
+                </a>
+                <span class="ms-2">صفحه قبل</span>
+            {% endif %}
+
+            {% if product_type.has_next %}
+                <span class="me-2">صفحه بعد</span>
+                <a class="next" href="{% url 'product:product_detail_page' product.slug product_type.next_page_number %}">
+                    <i class="fa-regular fa-arrow-left"></i>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</section>
 
 {% endblock %}

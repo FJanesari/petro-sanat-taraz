@@ -5,15 +5,20 @@ from django.core.paginator import Paginator
 
 def product_detail(request, slug, page=1):
     product = get_object_or_404(Product, slug=slug)
-    product_type = ProductType.objects.filter(is_active=True)
-    paginator = Paginator(product_type, 6)
+
+    # فقط نوع‌های مربوط به همین محصول
+    product_types = product.types.filter(is_active=True)
+
+    paginator = Paginator(product_types, 6)
     page_obj = paginator.get_page(page)
-    return render(request, "product-details.html", {"product": product,
-                                                    "product_type": page_obj,
-                                                    "default_meta_title": product.meta_title,
-                                                    "default_meta_description": product.meta_description,
-                                                    "canonical_url": product.canonical_url or request.build_absolute_uri(),
-                                                    })
+
+    return render(request, "product-details.html", {
+        "product": product,
+        "product_type": page_obj,  # page_obj برای pagination
+        "default_meta_title": product.meta_title,
+        "default_meta_description": product.meta_description,
+        "canonical_url": product.canonical_url or request.build_absolute_uri(),
+    })
 
 
 def product_type(request, slug):

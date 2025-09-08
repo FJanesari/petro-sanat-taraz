@@ -11,32 +11,24 @@
 <section class="banner-area bg-image"
          style="background-image: url('{% if banner.image %}{{ banner.image.url }}{% endif %}');">
 
-    <div class="banner-logo-wrapper"
-         style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-                display: flex; align-items: center; justify-content: center;
-                transform: translateX(-350px);">
-        {% if banner.image %}
-            <img src="{{ banner.image.url }}" alt="{{ banner.banner_title }}" loading="lazy">
-        {% endif %}
-    </div>
-
     <div class="container">
-        <div class="banner__content pb-120">
-            <h1>
-                {{ banner.banner_title }}
-            </h1>
-            <p>
-                {{ banner.banner_description }}
-            </p>
+        <div class="banner__content pb-120 text-center">
+            <h5 class="splt-txt wow" data-splitting>
+                {{ banner.meta_title }}
+            </h5>
+            <h1>{{ banner.banner_title }}</h1>
+            <p>{{ banner.banner_description }}</p>
 
-            <div class="d-flex align-items-center gap-3">
-                <a class="btn-one" href="{% url 'home:contact' %}"> مشاوره رایگان
+            <div class="d-flex align-items-center gap-3 justify-content-center">
+                <a class="btn-one" href="{% url 'home:contact' %}">
+                    مشاوره رایگان
                     <span>
                         <i class="fa-regular fa-arrow-up-left arry1"></i>
                         <i class="fa-regular fa-arrow-up-left arry2"></i>
                     </span>
                 </a>
-                <a class="btn-two" href="{% url 'home:about' %}">بیشتر بدانید
+                <a class="btn-two" href="{% url 'home:about' %}">
+                    بیشتر بدانید
                     <span>
                         <i class="fa-regular fa-arrow-left arry1"></i>
                         <i class="fa-regular fa-arrow-left arry2"></i>
@@ -45,6 +37,9 @@
             </div>
         </div>
 
+        <div class="brand-area pb-120">
+            <p class="mb-4">{{ banner.banner_subtitle }}</p>
+        </div>
     </div>
 </section>
 

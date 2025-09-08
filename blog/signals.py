@@ -1,8 +1,6 @@
-from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field as BaseCKEditor5Field
 import bleach
 from html import unescape
-from django.conf import settings
 
 
 class CleanedCKEditor5Field(BaseCKEditor5Field):

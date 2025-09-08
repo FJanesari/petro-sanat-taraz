@@ -5,8 +5,6 @@ from blog.models import Article
 
 
 class StaticViewSitemap(Sitemap):
-    changefreq = "monthly"
-    priority = 0.8
 
     def items(self):
         return ["home:home", "home:contact", "home:about"]
@@ -17,8 +15,6 @@ class StaticViewSitemap(Sitemap):
 
 
 class AboutUsPostSitemap(Sitemap):
-    changefreq = "weekly"
-    priority = 0.6
 
     def items(self):
         return AboutUsPost.objects.filter(is_active=True)
@@ -34,8 +30,6 @@ class AboutUsPostSitemap(Sitemap):
 
 
 class ProductSitemap(Sitemap):
-    changefreq = "weekly"
-    priority = 0.7
 
     def items(self):
         return Product.objects.filter(is_active=True)
@@ -51,8 +45,6 @@ class ProductSitemap(Sitemap):
 
 
 class ProductTypeSitemap(Sitemap):
-    changefreq = "weekly"
-    priority = 0.7
 
     def items(self):
         return ProductType.objects.filter(is_active=True)
@@ -68,8 +60,6 @@ class ProductTypeSitemap(Sitemap):
 
 
 class ArticleSitemap(Sitemap):
-    changefreq = "weekly"
-    priority = 0.7
 
     def items(self):
         return Article.objects.filter(is_active=True)
