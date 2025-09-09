@@ -8,6 +8,8 @@ class Project(TranslatableModel):
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
         meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
+        banner_title=models.CharField('عنوان بنر', blank=True),
+        banner_description=models.TextField('توضیحات بنر', blank=True),
         title=models.CharField(max_length=255, verbose_name="عنوان"),
         content=CleanedCKEditor5Field(config_name='default', blank=True, verbose_name="محتوای پروژه"),
     )
@@ -28,6 +30,23 @@ class Project(TranslatableModel):
 
     def __str__(self):
         return self.safe_translation_getter('title', any_language=True)
+
+
+class ProjectImage(models.Model):
+    project = models.ForeignKey(
+        Project,
+        on_delete=models.CASCADE,
+        related_name="gallery"
+    )
+    image = models.ImageField(upload_to="product-types/gallery/")
+    alt_text = models.CharField(max_length=255, blank=True)
+
+    class Meta:
+        verbose_name = "گالری تصویر پروژه"
+        verbose_name_plural = "گالری تصاویر پروژه"
+
+    def __str__(self):
+        return f"تصویر {self.project}"
 
 
 class ProjectInfo(TranslatableModel):

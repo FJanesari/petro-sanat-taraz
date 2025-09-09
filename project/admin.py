@@ -1,6 +1,6 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin, TranslatableModelForm
-from .models import ProjectInfo, Project
+from .models import ProjectInfo, Project, ProjectImage
 from .forms import SingleActiveInstanceMixin
 from django_ckeditor_5.widgets import CKEditor5Widget
 from django.core.exceptions import ValidationError
@@ -8,7 +8,7 @@ from django.conf import settings
 import bleach
 
 
-class ArticleAdminForm(TranslatableModelForm):
+class ProjectAdminForm(TranslatableModelForm):
     class Meta:
         model = Project
         fields = '__all__'
@@ -53,16 +53,24 @@ class ArticleAdminForm(TranslatableModelForm):
         return cleaned
 
 
+class ProjectImageInline(admin.TabularInline):
+    model = ProjectImage
+    extra = 1  # تعداد فرم خالی پیش‌فرض
+    fields = ["image", "alt_text"]
+
+
 @admin.register(Project)
-class ArticleAdmin(TranslatableAdmin):
-    form = ArticleAdminForm
+class ProjectAdmin(TranslatableAdmin):
+    form = ProjectAdminForm
     list_display = ('__str__', 'is_active')
     list_filter = ('is_active',)
     readonly_fields = ('created_at', 'updated_at')
+    inlines = [ProjectImageInline]
     fieldsets = (
         ("اطلاعات ترجمه‌پذیر", {
             'fields': (
                 'meta_title', 'meta_description',
+                'banner_title', 'banner_description',
                 'title',
                 'content'
             )
@@ -78,7 +86,7 @@ class ArticleAdmin(TranslatableAdmin):
     )
 
 
-class BlogAdminForm(SingleActiveInstanceMixin, TranslatableModelForm):
+class ProjectInfoAdminForm(SingleActiveInstanceMixin, TranslatableModelForm):
     model_class = ProjectInfo
     active_field_name = "is_active"
 
@@ -89,7 +97,7 @@ class BlogAdminForm(SingleActiveInstanceMixin, TranslatableModelForm):
 
 @admin.register(ProjectInfo)
 class BlogInfoAdmin(TranslatableAdmin):
-    form = BlogAdminForm
+    form = ProjectInfoAdminForm
     list_display = ("__str__", "is_active", "created_at")
     readonly_fields = ('created_at', 'updated_at')
     fieldsets = (

@@ -1,10 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block meta_title %}{{ type.meta_title }}{% endblock %}
+{% block meta_description %}{{ type.meta_description }}{% endblock %}
+{% block canonical %}
+  <link rel="canonical" href="{{ canonical_url }}">
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+            <!-- Banner area start here -->
+            <section class="banner-inner-area">
+                <div class="container">
+                  <div class="banner-inner__content">
+                  <h2>{{ project.banner_title }}</h2>
+                  <p>{{ project.banner_description }}</p>
+                  </div>
+                </div>
+              </section>
+              <!-- Banner area end here -->
+
+            <!-- Case details area start here -->
+            <section class="case-details-area pb-120">
+                <div class="container">
+                    <div class="image case-details__image">
+                                {% if project.image %}
+                              <img src="{{ project.image.url }}" alt="{{ project.title }}" loading="lazy">
+                                {% endif %}
+                    </div>
+                    <div class="case-details__wrp" style="padding: 70px 0;">
+
+                        <h1>{{ project.title }}</h1>
+                        <p>{{ project.content|safe }}</p>
+
+                        <div class="case-details__image-sm mt-30">
+                            {% for img in project.gallery.all %}
+                                <div class="image {% if forloop.counter == 2 %}sm-image{% endif %}">
+                                    <img src="{{ img.image.url }}" alt="{{ img.alt_text }}" loading="lazy">
+                                </div>
+                            {% empty %}
+                                <p>هیچ تصویری برای این نوع محصول ثبت نشده است.</p>
+                            {% endfor %}
+                                    </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Case details area end here -->
+
+{% endblock %}
