@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from core.sitemaps import StaticViewSitemap, AboutUsPostSitemap, ProductSitemap, ProductTypeSitemap, ArticleSitemap
+from core.sitemaps import StaticViewSitemap, AboutUsPostSitemap, ProductSitemap, ProductTypeSitemap,\
+    ArticleSitemap, ProjectSitemap, ProjectDetailSitemap
 from core.views import robots_txt
 from django.contrib.sitemaps import views as sitemap_views
 
@@ -12,6 +13,8 @@ sitemaps = {
     "products": ProductSitemap,
     "product_types": ProductTypeSitemap,
     "articles": ArticleSitemap,
+    "projects": ProjectSitemap,
+    "project_details": ProjectDetailSitemap,
 }
 
 urlpatterns = [
@@ -22,6 +25,8 @@ urlpatterns = [
     path("fa/", include("core.urls", namespace="home")),
     path('fa/', include("blog.urls", namespace='blog')),
     path("sitemap.xml", sitemap_views.index, {"sitemaps": sitemaps}),
+    path("sitemap-<section>.xml", sitemap_views.sitemap, {"sitemaps": sitemaps},
+         name="django.contrib.sitemaps.views.sitemap"),
     path("robots.txt", robots_txt, name="robots_txt"),
 ]
 

@@ -72,3 +72,33 @@ class ArticleSitemap(Sitemap):
     def location(self, obj):
         from django.urls import reverse
         return reverse("blog:blog_detail", args=[obj.slug])
+
+
+class ProjectDetailSitemap(Sitemap):
+
+    def items(self):
+        return ProductType.objects.filter(is_active=True)
+
+    def lastmod(self, obj):
+        if hasattr(obj.updated_at, "togregorian"):
+            return obj.updated_at.togregorian()
+        return obj.updated_at
+
+    def location(self, obj):
+        from django.urls import reverse
+        return reverse("project:project_detail", args=[obj.slug])
+
+
+class ProjectSitemap(Sitemap):
+
+    def items(self):
+        return Article.objects.filter(is_active=True)
+
+    def lastmod(self, obj):
+        if hasattr(obj.updated_at, "togregorian"):
+            return obj.updated_at.togregorian()
+        return obj.updated_at
+
+    def location(self, obj):
+        from django.urls import reverse
+        return reverse("project:project", args=[obj.slug])
