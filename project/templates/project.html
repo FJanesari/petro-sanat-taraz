@@ -24,14 +24,14 @@
     <section class="blog-area pb-120">
                 <div class="container">
                     <div class="section-header-flex mb-80">
-                        <h2 class="fw-300">{{ blog_info.title }}</h2>
+                        <h2 class="fw-300">{{ project_info.title }}</h2>
                         <div>
-                            <p>{{ blog_info.content }}
+                            <p>{{ project_info.content }}
                             </p>
                         </div>
                     </div>
                     <div class="row g-4">
-                    {% for item in article %}
+                    {% for item in project %}
                         <div class="col-lg-4">
 
                             <div class="blog__item">
@@ -41,8 +41,8 @@
         {#                  <a href='{% url 'product:product_type' item.slug %}'>{{ item.title }}</a>#}
         {#                             </div>#}
                                 </div>
-                                <h4 class="mt-10 mb-20"><a class='primary-hover' href='{% url 'blog:blog_detail' item.slug %}'>{{ item.title }}</a></h4>
-                                <a class='fs-18 blog-btn text-font' href='{% url 'blog:blog_detail' item.slug %}'>ادامه مطلب<i
+                                <h4 class="mt-10 mb-20"><a class='primary-hover' href='{% url 'project:project_detail' item.slug %}'>{{ item.title }}</a></h4>
+                                <a class='fs-18 blog-btn text-font' href='{% url 'project:project_detail' item.slug %}'>ادامه مطلب<i
                                         class="fa-light ms-1 fa-arrow-left"></i></a>
                             </div>
 
@@ -52,16 +52,16 @@
 
                     <div class="pegi justify-content-center mt-60">
 
-                    {% if article.has_previous %}
+                    {% if project.has_previous %}
                     <span>صفحه قبل</span>
-                    <a class="prev" href="{% url 'blog:blog_detail_page' article.slug page.previous_page_number %}">
+                    <a class="prev" href="{% url 'project:project_detail_page' project.slug page.previous_page_number %}">
 
                     <i class="fa-regular fa-arrow-right"></i>
                     </a>
                     {% endif %}
 
-                    {% if article.has_next %}
-                     <a class="next" href="{% url 'blog:blog_detail_page' article.slug page.next_page_number %}">
+                    {% if project.has_next %}
+                     <a class="next" href="{% url 'project:project_detail_page' project.slug page.next_page_number %}">
                      <i class="fa-regular fa-arrow-left"></i>
                     </a><span>صفحه بعد</span>
                 {% endif %}
