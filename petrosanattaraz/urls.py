@@ -17,9 +17,10 @@ sitemaps = {
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
+    path('fa/product/', include("product.urls", namespace='product')),
+    path('fa/project/', include("project.urls", namespace="project")),
     path("fa/", include("core.urls", namespace="home")),
     path('fa/', include("blog.urls", namespace='blog')),
-    path('fa/product/', include("product.urls", namespace='product')),
     path("sitemap.xml", sitemap_views.index, {"sitemaps": sitemaps}),
     path("robots.txt", robots_txt, name="robots_txt"),
 ]
