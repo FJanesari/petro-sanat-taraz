@@ -1,0 +1,23 @@
+{
+  "name": "ckeditor",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^39.0.2",
+    "@ckeditor/ckeditor5-image": "^46.1.0"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "raw-loader": "^4.0.2",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1"
+  }
+}

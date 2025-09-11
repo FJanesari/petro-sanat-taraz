@@ -154,6 +154,8 @@ USE_L10N = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
@@ -161,6 +163,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CKEDITOR_5_CUSTOM_JS = 'ckeditor/custom-ckeditor.js'
 
 CKEDITOR_5_CONFIGS = {
     'default': {
