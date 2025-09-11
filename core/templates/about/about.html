@@ -16,63 +16,20 @@
   </div>
 </section>
 
-<!-- محتوای پست -->
-<section class="case-details-area pb-120">
-  <div class="container">
-    {% if post %}
-      <div class="image case-details__image">
-        <img src="{{ post.image.url }}" alt="{{ post.post_title }}" loading="lazy">
-      </div>
-      <div class="case-details__wrp">
-        <h3>{{ post.post_title }}</h3>
-        <p>{{ post.post_content|safe }}</p>
-      </div>
-    {% endif %}
-  </div>
-</section>
+            <section class="case-details-area pb-120">
+            <div class="container">
 
-<!-- همه پست‌ها -->
-<section class="story-area pt-120 pb-120">
-  <div class="container">
-    <div class="section-header-flex line-title mb-80">
-      <h2 class="fw-600">مطالعه موردی و داستان‌های موفقیت ما</h2>
-    </div>
 
-    <div class="row g-5 align-items-start">
-      {% for item in posts %}
-        <div class="col-lg-6">
-          <div class="story__item">
-            {% if item.image %}
-              <div class="image">
-                <img src="{{ item.image.url }}" alt="{{ item.post_title }}">
-              </div>
-            {% endif %}
-            <div class="d-flex align-items-center flex-wrap gap-3 justify-content-between mt-20">
-              <div>
-                <h3 class="mb-2">
-                  <a href="{% url 'home:about_detail' item.slug %}">{{ item.post_title }}</a>
-                </h3>
-                <p class="text-muted">
-                  {{ item.post_content|striptags|truncatechars:100 }}
-                </p>
-              </div>
-              <div>
-                <a class="btn-one" href="{% url 'home:about_detail' item.slug %}">
-                  مشاهده این مورد
-                  <span>
-                    <i class="fa-regular fa-arrow-up-left arry1"></i>
-                    <i class="fa-regular fa-arrow-up-left arry2"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
 
-                                                <!-- Story area end here -->
+{% if about_us.video %}
+  <video width="600" controls>
+      <source src="{{ about_us.video.url }}" type="video/mp4">
+      مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+  </video>
+{% endif %}
+                        </div>
+            </section>
+
+
             
 {% endblock %}

@@ -104,7 +104,7 @@ class AboutUsInfoAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                "is_active",
+                "video", "is_active",
             )
         }),
         ('اطلاعات زمان', {
