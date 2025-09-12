@@ -99,24 +99,24 @@
                     <div class="swiper story__slider">
                         <div class="swiper-wrapper">
                                 <div class="row g-5 align-items-star">
-                                    {% for item in about_us_posts %}
+                                    {% for item in project_posts %}
                                     <div class="col-lg-6">
 
                                         <div class="story__item">
                                             {% if item.image %}
                                             <div class="image">
-                                                <img src="{{ item.image.url }}" alt="{{ item.post_title }}" loading="lazy">
+                                                <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
                                             </div>
                                             {% endif %}
                                             <div
                                                 class="d-flex align-items-center flex-wrap gap-3 justify-content-between mt-20">
                                                 <div>
-                                                    <h3 class="mb-2"><a href="{% url 'home:about_detail' item.slug %}"></a>{{ item.post_title }}</h3>
+                                                    <h3 class="mb-2"><a href="{% url 'home:project_detail' item.slug %}"></a>{{ item.title }}</h3>
                                                         <p class="text-muted">
-                                                            {{ item.post_content|striptags|truncatechars:100 }}
+                                                            {{ item.content|striptags|truncatechars:100 }}
                                                         </p>
                                                 </div>
-                                                <div> <a class='btn-one' href='{% url 'home:about_detail' item.slug %}'>مشاهده این مورد
+                                                <div> <a class='btn-one' href='{% url 'home:project_detail' item.slug %}'>مشاهده این مورد
                                                         <span>
                                                             <i class="fa-regular fa-arrow-up-left arry1"></i>
                                                             <i class="fa-regular fa-arrow-up-left arry2"></i>
@@ -131,7 +131,7 @@
                         </div>
                     </div>
                     <div class="story__btn mt-80">
-                        <a href="{% url 'home:about' %}" class="btn-one active">جستجوی بیشتر
+                        <a href="{% url 'home:project' %}" class="btn-one active">جستجوی بیشتر
                             <span>
                                 <i class="fa-regular fa-arrow-up-left arry1"></i>
                                 <i class="fa-regular fa-arrow-up-left arry2"></i>

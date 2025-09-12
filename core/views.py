@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from product.models import Product
-from .models import HomeInfo, FanFact, AboutUsPost, Setting, AboutUsInfo, ContactUsInfo, ContactMessage
+from .models import HomeInfo, FanFact, Setting, AboutUsInfo, ContactUsInfo, ContactMessage
 from blog.models import Article
+from project.models import Project, ProjectInfo
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import ContactForm
@@ -12,14 +13,14 @@ def home(request):
     products = Product.objects.all()
     banner = HomeInfo.objects.filter(is_active=True).first()
     fanfacts = FanFact.objects.filter(is_active=True)
-    about_us_posts = AboutUsPost.objects.filter(is_active=True)[:4]
+    project_posts = Project.objects.filter(is_active=True)[:4]
     blog = Article.objects.filter(is_active=True)[:4]
     setting = Setting.objects.filter(is_active=True).first()
     return render(request, 'home/index.html', {
         "products": products,
         "banner": banner,
         "fanfacts": fanfacts,
-        "about_us_posts": about_us_posts,
+        "project_posts": project_posts,
         "blog": blog,
         "setting": setting,
         "default_meta_title": banner.meta_title,
@@ -50,27 +51,31 @@ def contact(request):
 
 def about(request):
     banner = AboutUsInfo.objects.filter(is_active=True).first()
-    posts = AboutUsPost.objects.filter(is_active=True)
-
-    # فرض: پست پیش‌فرض (اولین پست)
-    default_post = posts.first()
 
     return render(request, "about/about.html", {
         "about_us": banner,
-        "post": default_post,
-        "posts": posts,
         "default_meta_title": banner.meta_title,
         "default_meta_description": banner.meta_description,
     })
 
 
-def about_detail(request, slug):
-    banner = AboutUsInfo.objects.filter(is_active=True).first()
-    posts = AboutUsPost.objects.filter(is_active=True)
-    post = get_object_or_404(AboutUsPost, is_active=True, slug=slug)
+def project(request):
+    banner = ProjectInfo.objects.filter(is_active=True).first()
 
-    return render(request, "about/about.html", {
-        "about_us": banner,
+    return render(request, "project.html", {
+        "projects": banner,
+        "default_meta_title": banner.meta_title,
+        "default_meta_description": banner.meta_description,
+    })
+
+
+def project_detail(request, slug):
+    banner = AboutUsInfo.objects.filter(is_active=True).first()
+    posts = Project.objects.filter(is_active=True)
+    post = get_object_or_404(Project, is_active=True, slug=slug)
+
+    return render(request, "project_details.html", {
+        "projects": banner,
         "post": post,
         "posts": posts,
         "default_meta_title": banner.meta_title,
