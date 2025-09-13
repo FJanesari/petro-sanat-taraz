@@ -164,15 +164,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'png', 'jpg']
+CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'png', 'jpg', 'webp']
 
 CKEDITOR_5_CONFIGS = {
     "default": {
         "toolbar": [
             "heading", "|",
-            "bold", "italic", "underline", "link", "bulletedList", "numberedList", "|",
-            'blockQuote','|',
-            'insertTable','|',
+            "bold", "italic", "underline", "link",
+            "bulletedList", "numberedList", "|",
+            "blockQuote", "|",
+            "insertTable", "|",
             "insertImage", "|",
         ],
         "image": {
@@ -182,14 +183,47 @@ CKEDITOR_5_CONFIGS = {
                 "imageStyle:alignRight",
                 "imageStyle:alignCenter", "|",
             ],
-
         },
-        'table': {
-            'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells',
-            'tableProperties', 'tableCellProperties'],
+        "table": {
+            "contentToolbar": [
+                "tableColumn", "tableRow",
+                "mergeTableCells", "tableProperties", "tableCellProperties",
+            ]
         },
 
+        # 🛡 بخش امنیتی
+        "htmlSupport": {
+            "allow": [
+                {"name": "a", "attributes": ["href", "target", "rel", "title"]},
+                {"name": "img", "attributes": ["src", "alt", "width", "height", "style"]},
+                {"name": "p"}, {"name": "div"}, {"name": "span", "attributes": ["style"]},
+                {"name": "strong"}, {"name": "em"}, {"name": "u"}, {"name": "s"},
+                {"name": "ul"}, {"name": "ol"}, {"name": "li"},
+                {"name": "blockquote"}, {"name": "pre"}, {"name": "code"},
+                {"name": "table"}, {"name": "thead"}, {"name": "tbody"},
+                {"name": "tr"}, {"name": "td"}, {"name": "th"},
+                {"name": "br"}, {"name": "hr"},
+            ],
+            "disallow": [
+                {"name": "script"},
+                {"name": "iframe"},
+                {"name": "object"},
+                {"name": "embed"},
+                {"name": "form"},
+                {"name": "input"},
+                {"name": "button"},
+                {"name": "textarea"},
+                {"name": "style"},  # بلاک تگ <style>
+            ],
+        },
+        "htmlEmbed": {
+            "showPreviews": False,  # جلوگیری از اجرای کدهای embed
+        },
+        "mediaEmbed": {
+            "previewsInData": False,  # جلوگیری از لود اتوماتیک مدیا
+        },
     }
 }
+
 
 CKEDITOR_5_UPLOAD_PATH = "uploads/"

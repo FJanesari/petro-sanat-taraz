@@ -12,7 +12,7 @@ class Project(TranslatableModel):
         banner_title=models.CharField('عنوان بنر', blank=True),
         banner_description=models.TextField('توضیحات بنر', blank=True),
         title=models.CharField(max_length=255, verbose_name="عنوان"),
-        content=CKEditor5Field(config_name='default', blank=True, verbose_name="محتوای پروژه"),
+        content=CleanedCKEditor5Field(config_name='default', blank=True, verbose_name="محتوای پروژه"),
     )
     image = models.ImageField(upload_to='articles/images/', blank=True, null=True, verbose_name="تصویر شاخص")
     slug = models.SlugField(unique=True, verbose_name="اسلاگ")
