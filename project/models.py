@@ -2,7 +2,6 @@ from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
 from django_jalali.db import models as jmodels
 from .signals import CleanedCKEditor5Field
-from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Project(TranslatableModel):
