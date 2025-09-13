@@ -32,7 +32,9 @@
                     <div class="case-details__wrp" style="padding: 70px 0;">
 
                         <h1>{{ project.title }}</h1>
+                    <div class="container ck-content">
                         <p>{{ project.content|safe }}</p>
+                    </div>
 
                         <div class="case-details__image-sm mt-30">
                             {% for img in project.gallery.all %}

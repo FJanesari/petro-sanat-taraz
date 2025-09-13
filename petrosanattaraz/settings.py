@@ -164,163 +164,32 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CKEDITOR_5_CUSTOM_JS = 'ckeditor/custom-ckeditor.js'
+CKEDITOR_5_UPLOAD_FILE_TYPES = ['jpeg', 'png', 'jpg']
 
 CKEDITOR_5_CONFIGS = {
-    'default': {
-        'toolbar': [
-            'heading',
-            '|',
-            'bold',
-            'italic',
-            'link',
-            'underline',
-            '|',
-            'bulletedList',
-            'numberedList',
-            'blockQuote',
-            '|',
-            'imageUpload',
-            '|',
-            'undo',
-            'redo',
+    "default": {
+        "toolbar": [
+            "heading", "|",
+            "bold", "italic", "underline", "link", "bulletedList", "numberedList", "|",
+            'blockQuote','|',
+            'insertTable','|',
+            "insertImage", "|",
         ],
-        "link": {
-            "addTargetToExternalLinks": True,
-            "defaultProtocol": "https://",
-            "decorators": {
-                "openInNewTab": {
-                    "mode": "manual",
-                    "label": "Open in a new tab",
-                    "attributes": {
-                        "target": "_blank",
-                        "rel": "noopener noreferrer"
-                    }
-                }
-            }
-        },
-        'language': 'fa',
-        'htmlSupport': {
-            'allow': [
-                {'name': 'a', 'attributes': ['href', 'target', 'rel', 'title']},
-                {'name': 'img', 'attributes': ['src', 'alt', 'width', 'height']},
-                {'name': 'h1'}, {'name': 'h2'}, {'name': 'h3'}, {'name': 'h4'}, {'name': 'h5'}, {'name': 'h6'},
-                {'name': 'p'}, {'name': 'div'}, {'name': 'span'},
-                {'name': 'strong'}, {'name': 'em'}, {'name': 'u'}, {'name': 's'},
-                {'name': 'ul'}, {'name': 'ol'}, {'name': 'li'},
-                {'name': 'blockquote'}, {'name': 'pre'}, {'name': 'code'},
-                {'name': 'table'}, {'name': 'thead'}, {'name': 'tbody'}, {'name': 'tr'}, {'name': 'td'}, {'name': 'th'},
-                {'name': 'br'}, {'name': 'hr'}
+        "image": {
+            "toolbar": [
+                "imageTextAlternative", "|",
+                "imageStyle:alignLeft",
+                "imageStyle:alignRight",
+                "imageStyle:alignCenter", "|",
             ],
-            'disallow': [
-                {'name': 'script'},  # مسدود کردن تگ اسکریپت
-                {'name': 'iframe'},   # مسدود کردن iframe
-                {'name': 'object'},  # مسدود کردن object
-                {'name': 'embed'},   # مسدود کردن embed
-                {'name': 'style'},    # مسدود کردن style
-                {'name': 'form'},     # مسدود کردن form
-                {'name': 'input'},    # مسدود کردن input
-                {'name': 'button'},  # مسدود کردن button
-                {'name': 'textarea'}  # مسدود کردن textarea
-            ]
-        },
-        'htmlEmbed': {
-            'showPreviews': False,  # غیرفعال کردن پیش نمایش کدهای embed
-        },
-        'mediaEmbed': {
-            'previewsInData': False,  # غیرفعال کردن پیش نمایش رسانه‌ها
-        },
-        'heading': {
-            'options': [
-                {'model': 'paragraph', 'title': 'متن معمولی', 'class': 'ck-heading_paragraph'},
-                {'model': 'heading1', 'view': 'h1', 'title': 'سرتیتر ۱', 'class': 'ck-heading_heading1'},
-                {'model': 'heading2', 'view': 'h2', 'title': 'سرتیتر ۲', 'class': 'ck-heading_heading2'},
-                {'model': 'heading3', 'view': 'h3', 'title': 'سرتیتر ۳', 'class': 'ck-heading_heading3'}
-            ]
-        }
-    },
-    'extends': {
-        'blockToolbar': [
-            'paragraph',
-            'heading1',
-            'heading2',
-            'heading3',
-            '|',
-            'bulletedList',
-            'numberedList',
-            '|',
-            'blockQuote',
-        ],
-        'toolbar': [
-            'heading',
-            '|',
-            'bold',
-            'italic',
-            'underline',
-            'strikethrough',
-            'link',
-            '|',
-            'fontBackgroundColor',
-            'fontColor',
-            'fontSize',
-            'fontFamily',
-            '|',
-            'alignment',
-            '|',
-            'bulletedList',
-            'numberedList',
-            '|',
-            'indent',
-            'outdent',
-            '|',
-            'imageUpload',
-            'blockQuote',
-            'insertTable',
-            'mediaEmbed',
-            'codeBlock',
-            'htmlEmbed',
-            '|',
-            'undo',
-            'redo',
-        ],
-        'image': {
-            'toolbar': [
-                'imageTextAlternative',
-                'toggleImageCaption',
-                'imageStyle:inline',
-                'imageStyle:block',
-                'imageStyle:side',
-            ],
-            'styles': [
-                'full',
-                'side',
-                'alignLeft',
-                'alignRight',
-                'alignCenter',
-            ]
+
         },
         'table': {
-            'contentToolbar': [
-                'tableColumn',
-                'tableRow',
-                'mergeTableCells',
-                'tableProperties',
-                'tableCellProperties',
-            ]
+            'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells',
+            'tableProperties', 'tableCellProperties'],
         },
-        'heading': {
-            'options': [
-                {'model': 'paragraph', 'title': 'متن معمولی', 'class': 'ck-heading_paragraph'},
-                {'model': 'heading1', 'view': 'h1', 'title': 'سرتیتر ۱', 'class': 'ck-heading_heading1'},
-                {'model': 'heading2', 'view': 'h2', 'title': 'سرتیتر ۲', 'class': 'ck-heading_heading2'},
-                {'model': 'heading3', 'view': 'h3', 'title': 'سرتیتر ۳', 'class': 'ck-heading_heading3'},
-                {'model': 'heading4', 'view': 'h4', 'title': 'سرتیتر ۴', 'class': 'ck-heading_heading4'},
-                {'model': 'heading5', 'view': 'h5', 'title': 'سرتیتر ۵', 'class': 'ck-heading_heading5'},
-                {'model': 'heading6', 'view': 'h6', 'title': 'سرتیتر ۶', 'class': 'ck-heading_heading6'}
-            ]
-        }
+
     }
 }
 
 CKEDITOR_5_UPLOAD_PATH = "uploads/"
-
