@@ -5,6 +5,18 @@ from .signals import CleanedCKEditor5Field
 
 
 class Product(TranslatableModel):
+    META_ROBOTS_CHOICES = [
+        ("index, follow", "Index, Follow (پیشفرض)"),
+        ("noindex, follow", "Noindex, Follow"),
+        ("index, nofollow", "Index, Nofollow"),
+        ("noindex, nofollow", "Noindex, Nofollow"),
+    ]
+    meta_robots = models.CharField(
+        max_length=20,
+        choices=META_ROBOTS_CHOICES,
+        default="index, follow",
+        verbose_name="Meta Robots"
+    )
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
         meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
@@ -34,6 +46,18 @@ class Product(TranslatableModel):
 
 
 class ProductType(TranslatableModel):
+    META_ROBOTS_CHOICES = [
+        ("index, follow", "Index, Follow (پیشفرض)"),
+        ("noindex, follow", "Noindex, Follow"),
+        ("index, nofollow", "Index, Nofollow"),
+        ("noindex, nofollow", "Noindex, Nofollow"),
+    ]
+    meta_robots = models.CharField(
+        max_length=20,
+        choices=META_ROBOTS_CHOICES,
+        default="index, follow",
+        verbose_name="Meta Robots"
+    )
     product = models.ForeignKey(
         Product,
         on_delete=models.CASCADE,

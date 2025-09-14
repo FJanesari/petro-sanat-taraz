@@ -19,7 +19,7 @@ class ProductAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                'image', 'is_active', 'slug', 'canonical_url'
+                'image', 'is_active', 'slug', 'canonical_url', 'meta_robots'
             )
         }),
         ('اطلاعات زمان', {
@@ -51,7 +51,7 @@ class ProductTypeAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                'image', 'product', 'is_active', 'slug', 'canonical_url'
+                'image', 'product', 'is_active', 'slug', 'canonical_url', 'meta_robots'
             )
         }),
         ('اطلاعات زمان', {
