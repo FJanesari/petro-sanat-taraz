@@ -63,7 +63,7 @@ class ContactUsInfoAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                'email', "is_active"
+                'email', "is_active", 'meta_robots'
             )
         }),
         ('اطلاعات زمان', {
@@ -104,7 +104,7 @@ class AboutUsInfoAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                "video", "is_active",
+                "video", "is_active", 'meta_robots'
             )
         }),
         ('اطلاعات زمان', {
@@ -158,7 +158,7 @@ class HomeInfoAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                "is_active", "image"
+                "is_active", "image", 'meta_robots'
             )
         }),
         ('اطلاعات زمان', {

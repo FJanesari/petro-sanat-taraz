@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from product.models import Product
-from .models import HomeInfo, FanFact, Setting, AboutUsInfo, ContactUsInfo, ContactMessage
+from .models import HomeInfo, FanFact, Setting, AboutUsInfo, ContactUsInfo
 from blog.models import Article
 from project.models import Project, ProjectInfo
 from django.shortcuts import render, redirect
@@ -25,6 +25,7 @@ def home(request):
         "setting": setting,
         "default_meta_title": banner.meta_title,
         "default_meta_description": banner.meta_description,
+        "meta_robots": banner.meta_robots,
     })
 
 
@@ -46,6 +47,7 @@ def contact(request):
         "form": form,
         "default_meta_title": banner.meta_title,
         "default_meta_description": banner.meta_description,
+        "meta_robots": banner.meta_robots,
     })
 
 
@@ -56,6 +58,7 @@ def about(request):
         "about_us": banner,
         "default_meta_title": banner.meta_title,
         "default_meta_description": banner.meta_description,
+        "meta_robots": banner.meta_robots,
     })
 
 

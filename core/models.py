@@ -34,6 +34,18 @@ class Setting(TranslatableModel):
 
 
 class AboutUsInfo(TranslatableModel):
+    META_ROBOTS_CHOICES = [
+        ("index, follow", "Index, Follow (پیشفرض)"),
+        ("noindex, follow", "Noindex, Follow"),
+        ("index, nofollow", "Index, Nofollow"),
+        ("noindex, nofollow", "Noindex, Nofollow"),
+    ]
+    meta_robots = models.CharField(
+        max_length=20,
+        choices=META_ROBOTS_CHOICES,
+        default="index, follow",
+        verbose_name="Meta Robots"
+    )
     translations = TranslatedFields(
         banner_title=models.CharField(max_length=200, verbose_name="عنوان بنر صفحه"),
         banner_description=models.TextField(verbose_name="توضیحات بنر صفحه"),
@@ -77,6 +89,18 @@ class AboutUsPost(TranslatableModel):
 
 
 class ContactUsInfo(TranslatableModel):
+    META_ROBOTS_CHOICES = [
+        ("index, follow", "Index, Follow (پیشفرض)"),
+        ("noindex, follow", "Noindex, Follow"),
+        ("index, nofollow", "Index, Nofollow"),
+        ("noindex, nofollow", "Noindex, Nofollow"),
+    ]
+    meta_robots = models.CharField(
+        max_length=20,
+        choices=META_ROBOTS_CHOICES,
+        default="index, follow",
+        verbose_name="Meta Robots"
+    )
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
         meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
@@ -126,6 +150,18 @@ class ContactMessage(models.Model):
 
 
 class HomeInfo(TranslatableModel):
+    META_ROBOTS_CHOICES = [
+        ("index, follow", "Index, Follow (پیشفرض)"),
+        ("noindex, follow", "Noindex, Follow"),
+        ("index, nofollow", "Index, Nofollow"),
+        ("noindex, nofollow", "Noindex, Nofollow"),
+    ]
+    meta_robots = models.CharField(
+        max_length=20,
+        choices=META_ROBOTS_CHOICES,
+        default="index, follow",
+        verbose_name="Meta Robots"
+    )
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
         meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
