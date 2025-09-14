@@ -13,12 +13,13 @@ def project_detail(request, slug):
 
         recent_posts = Project.objects.exclude(id=project.id).order_by("-created_at")[:3]
     return render(request, "project_details.html", {"project": project,
-                                                 "recent_posts": recent_posts,
-                                                 "query": query,
-                                                 "default_meta_title": project.meta_title,
-                                                 "default_meta_description": project.meta_description,
-                                                 "canonical_url": project.canonical_url or request.build_absolute_uri(),
-                                                 })
+                                                    "recent_posts": recent_posts,
+                                                    "query": query,
+                                                    "default_meta_title": project.meta_title,
+                                                    "default_meta_description": project.meta_description,
+                                                    "meta_robots": project.meta_robots,
+                                                    "canonical_url": project.canonical_url or request.build_absolute_uri(),
+                                                    })
 
 
 def project(request, page=1):
@@ -31,4 +32,5 @@ def project(request, page=1):
         "project_info": project_info,
         "default_meta_title": project_info.meta_title,
         "default_meta_description": project_info.meta_description,
+        "meta_robots": project_info.meta_robots,
     })
