@@ -69,7 +69,7 @@ class ArticleAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                'author', 'image', 'slug', 'canonical_url', 'is_active'
+                'author', 'image', 'slug', 'canonical_url', 'is_active', 'meta_robots'
             )
         }),
         ('اطلاعات زمان', {
@@ -102,7 +102,7 @@ class BlogInfoAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                "is_active",
+                "is_active", 'meta_robots'
             )
         }),
         ('اطلاعات زمان', {

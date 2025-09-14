@@ -17,6 +17,7 @@ def blog_detail(request, slug):
                                                  "query": query,
                                                  "default_meta_title": article.meta_title,
                                                  "default_meta_description": article.meta_description,
+                                                 "meta_robots": article.meta_robots,
                                                  "canonical_url": article.canonical_url or request.build_absolute_uri(),
                                                  })
 
@@ -44,4 +45,5 @@ def blog(request, page=1):
         "blog_info": blog_info,
         "default_meta_title": blog_info.meta_title,
         "default_meta_description": blog_info.meta_description,
+        "meta_robots": blog_info.meta_robots,
     })
