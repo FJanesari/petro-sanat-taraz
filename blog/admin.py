@@ -69,7 +69,7 @@ class ArticleAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                'author', 'image', 'slug', 'canonical_url', 'is_active', 'meta_robots'
+                'author', 'image', 'video', 'slug', 'canonical_url', 'is_active', 'meta_robots'
             )
         }),
         ('اطلاعات زمان', {

@@ -25,6 +25,7 @@ class Article(TranslatableModel):
     )
     author = models.CharField(max_length=100, verbose_name="نویسنده")
     image = models.ImageField(upload_to='articles/images/', blank=True, null=True, verbose_name="تصویر شاخص")
+    video = models.FileField('ویدئو',upload_to='videos/', blank=True)
     slug = models.SlugField(unique=True, verbose_name="اسلاگ")
     is_active = models.BooleanField(default=True, verbose_name="فعال باشد؟")
     created_at = jmodels.jDateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
