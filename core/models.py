@@ -54,7 +54,7 @@ class AboutUsInfo(TranslatableModel):
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
         meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
     )
-    video = models.FileField(upload_to='videos/', blank=True)
+    video = models.FileField('ویدئو',upload_to='videos/', blank=True)
     is_active = models.BooleanField("فعال باشد؟", default=False)
     created_at = jmodels.jDateTimeField("تاریخ ایجاد", auto_now_add=True)
     updated_at = jmodels.jDateTimeField("تاریخ بروز رسانی", auto_now=True)
@@ -171,6 +171,7 @@ class HomeInfo(TranslatableModel):
         content=models.TextField("محتوا", blank=True, ),
     )
     image = models.ImageField("تصویر بنر", upload_to="home/", null=True, blank=True)
+    video = models.FileField('ویدئو',upload_to='videos/', blank=True)
     is_active = models.BooleanField("فعال باشد؟", default=False)
     created_at = jmodels.jDateTimeField("تاریخ ایجاد", auto_now_add=True)
     updated_at = jmodels.jDateTimeField("تاریخ بروز رسانی", auto_now=True)

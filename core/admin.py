@@ -158,7 +158,7 @@ class HomeInfoAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                "is_active", "image", 'meta_robots'
+                "is_active", "image", "video", 'meta_robots'
             )
         }),
         ('اطلاعات زمان', {
