@@ -25,6 +25,9 @@ def home(request):
         "setting": setting,
         "default_meta_title": banner.meta_title,
         "default_meta_description": banner.meta_description,
+        "og_title": banner.og_title or banner.meta_title or banner.title,
+        "og_description": banner.og_description or banner.meta_description,
+        "og_image": banner.og_image.url if banner.og_image else None,
         "meta_robots": banner.meta_robots,
     })
 
@@ -47,6 +50,9 @@ def contact(request):
         "form": form,
         "default_meta_title": banner.meta_title,
         "default_meta_description": banner.meta_description,
+        "og_title": banner.og_title or banner.meta_title or banner.title,
+        "og_description": banner.og_description or banner.meta_description,
+        "og_image": banner.og_image.url if banner.og_image else None,
         "meta_robots": banner.meta_robots,
     })
 
@@ -59,6 +65,9 @@ def about(request):
         "default_meta_title": banner.meta_title,
         "default_meta_description": banner.meta_description,
         "meta_robots": banner.meta_robots,
+        "og_title": banner.og_title or banner.meta_title or banner.title,
+        "og_description": banner.og_description or banner.meta_description,
+        "og_image": banner.og_image.url if banner.og_image else None,
     })
 
 
@@ -73,7 +82,7 @@ def project(request):
 
 
 def project_detail(request, slug):
-    banner = AboutUsInfo.objects.filter(is_active=True).first()
+    banner = ProjectInfo.objects.filter(is_active=True).first()
     posts = Project.objects.filter(is_active=True)
     post = get_object_or_404(Project, is_active=True, slug=slug)
 
