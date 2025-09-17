@@ -70,6 +70,7 @@ class ProjectAdmin(TranslatableAdmin):
         ("اطلاعات ترجمه‌پذیر", {
             'fields': (
                 'meta_title', 'meta_description',
+                'og_title', 'og_description', 'og_image',
                 'banner_title', 'banner_description',
                 'title',
                 'content'
@@ -104,13 +105,14 @@ class BlogInfoAdmin(TranslatableAdmin):
         ("اطلاعات ترجمه‌پذیر", {
             'fields': (
                 'meta_title', 'meta_description',
+                'og_title', 'og_description', 'og_image',
                 'banner_title', 'banner_description',
                 'title', 'content',
             )
         }),
         ("عمومی", {
             'fields': (
-                "is_active", 'meta_robots'
+                "is_active", 'meta_robots', 'canonical_url',
             )
         }),
         ('اطلاعات زمان', {

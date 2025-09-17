@@ -17,6 +17,9 @@ def project_detail(request, slug):
                                                     "query": query,
                                                     "default_meta_title": project.meta_title,
                                                     "default_meta_description": project.meta_description,
+                                                    "og_title": project.og_title or project.meta_title or project.title,
+                                                    "og_description": project.og_description or project.meta_description,
+                                                    "og_image": project.og_image.url if project.og_image else None,
                                                     "meta_robots": project.meta_robots,
                                                     "canonical_url": project.canonical_url or request.build_absolute_uri(),
                                                     })
@@ -32,5 +35,9 @@ def project(request, page=1):
         "project_info": project_info,
         "default_meta_title": project_info.meta_title,
         "default_meta_description": project_info.meta_description,
+        "og_title": project_info.og_title or project_info.meta_title or project_info.title,
+        "og_description": project_info.og_description or project_info.meta_description,
+        "og_image": project_info.og_image.url if project_info.og_image else None,
         "meta_robots": project_info.meta_robots,
+        "canonical_url": project_info.canonical_url or request.build_absolute_uri(),
     })

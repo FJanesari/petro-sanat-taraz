@@ -20,6 +20,9 @@ class Project(TranslatableModel):
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
         meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
+        og_title=models.CharField('عنوان OG', max_length=255, blank=True, null=True),
+        og_description=models.TextField('توضیحات OG', blank=True, null=True),
+        og_image=models.ImageField('عکس OG', upload_to="og_images/", blank=True, null=True),
         banner_title=models.CharField('عنوان بنر', blank=True),
         banner_description=models.TextField('توضیحات بنر', blank=True),
         title=models.CharField(max_length=255, verbose_name="عنوان"),
@@ -77,6 +80,9 @@ class ProjectInfo(TranslatableModel):
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
         meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
+        og_title=models.CharField('عنوان OG', max_length=255, blank=True, null=True),
+        og_description=models.TextField('توضیحات OG', blank=True, null=True),
+        og_image=models.ImageField('عکس OG', upload_to="og_images/", blank=True, null=True),
         banner_title=models.CharField(max_length=200, verbose_name="عنوان بنر صفحه"),
         banner_description=models.TextField(verbose_name="توضیحات بنر صفحه"),
         title=models.CharField("عنوان", max_length=200, blank=True),
@@ -85,6 +91,10 @@ class ProjectInfo(TranslatableModel):
     is_active = models.BooleanField("فعال باشد؟", default=False)
     created_at = jmodels.jDateTimeField("تاریخ ایجاد", auto_now_add=True)
     updated_at = jmodels.jDateTimeField("تاریخ بروز رسانی", auto_now=True)
+    canonical_url = models.URLField(
+        "آدرس Canonical", blank=True, null=True,
+        help_text="اگر خالی باشد، به صورت پیش‌فرض همان آدرس صفحه استفاده می‌شود."
+    )
 
     class Meta:
         ordering = ["-created_at"]
