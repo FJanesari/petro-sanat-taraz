@@ -61,6 +61,10 @@ class AboutUsInfo(TranslatableModel):
     is_active = models.BooleanField("فعال باشد؟", default=False)
     created_at = jmodels.jDateTimeField("تاریخ ایجاد", auto_now_add=True)
     updated_at = jmodels.jDateTimeField("تاریخ بروز رسانی", auto_now=True)
+    canonical_url = models.URLField(
+        "آدرس Canonical", blank=True, null=True,
+        help_text="اگر خالی باشد، به صورت پیش‌فرض همان آدرس صفحه استفاده می‌شود."
+    )
 
     class Meta:
         ordering = ["-created_at"]
@@ -126,6 +130,10 @@ class ContactUsInfo(TranslatableModel):
     is_active = models.BooleanField(default=False, verbose_name="فعال")
     created_at = jmodels.jDateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
     updated_at = jmodels.jDateTimeField(auto_now=True, verbose_name="تاریخ بروز رسانی")
+    canonical_url = models.URLField(
+        "آدرس Canonical", blank=True, null=True,
+        help_text="اگر خالی باشد، به صورت پیش‌فرض همان آدرس صفحه استفاده می‌شود."
+    )
 
     class Meta:
         ordering = ["-created_at"]
@@ -184,6 +192,10 @@ class HomeInfo(TranslatableModel):
     is_active = models.BooleanField("فعال باشد؟", default=False)
     created_at = jmodels.jDateTimeField("تاریخ ایجاد", auto_now_add=True)
     updated_at = jmodels.jDateTimeField("تاریخ بروز رسانی", auto_now=True)
+    canonical_url = models.URLField(
+        "آدرس Canonical", blank=True, null=True,
+        help_text="اگر خالی باشد، به صورت پیش‌فرض همان آدرس صفحه استفاده می‌شود."
+    )
 
     class Meta:
         ordering = ["-created_at"]

@@ -64,7 +64,7 @@ class ContactUsInfoAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                'email', "is_active", 'meta_robots'
+                'email', "is_active", 'meta_robots', 'canonical_url',
             )
         }),
         ('اطلاعات زمان', {
@@ -105,7 +105,7 @@ class AboutUsInfoAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                "video", "is_active", 'meta_robots'
+                "video", "is_active", 'meta_robots', 'canonical_url',
             )
         }),
         ('اطلاعات زمان', {
@@ -159,7 +159,7 @@ class HomeInfoAdmin(TranslatableAdmin):
         }),
         ("عمومی", {
             'fields': (
-                "is_active", "image", "video", 'meta_robots'
+                "is_active", "image", "video", 'meta_robots', 'canonical_url',
             )
         }),
         ('اطلاعات زمان', {
