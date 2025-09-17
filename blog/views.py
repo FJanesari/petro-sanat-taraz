@@ -17,6 +17,9 @@ def blog_detail(request, slug):
                                                  "query": query,
                                                  "default_meta_title": article.meta_title,
                                                  "default_meta_description": article.meta_description,
+                                                 "og_title": article.og_title or article.meta_title or article.title,
+                                                 "og_description": article.og_description or article.meta_description,
+                                                 "og_image": article.og_image.url if article.og_image else None,
                                                  "meta_robots": article.meta_robots,
                                                  "canonical_url": article.canonical_url or request.build_absolute_uri(),
                                                  })
@@ -45,5 +48,9 @@ def blog(request, page=1):
         "blog_info": blog_info,
         "default_meta_title": blog_info.meta_title,
         "default_meta_description": blog_info.meta_description,
+        "og_title": blog_info.og_title or blog_info.meta_title or blog_info.title,
+        "og_description": blog_info.og_description or blog_info.meta_description,
+        "og_image": blog_info.og_image.url if blog_info.og_image else None,
         "meta_robots": blog_info.meta_robots,
+        "canonical_url": blog_info.canonical_url or request.build_absolute_uri(),
     })
