@@ -20,6 +20,9 @@ class Product(TranslatableModel):
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
         meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
+        og_title=models.CharField('عنوان OG', max_length=255, blank=True, null=True),
+        og_description=models.TextField('توضیحات OG', blank=True, null=True),
+        og_image=models.ImageField('عکس OG', upload_to="og_images/", blank=True, null=True),
         banner_title=models.CharField(max_length=200, default='محصولات پترو صنعت تاراز', verbose_name="عنوان بنر صفحه"),
         banner_description=models.TextField(blank=True, verbose_name="توضیحات بنر صفحه"),
         title=models.CharField(max_length=255, verbose_name="نام محصول"),
@@ -67,6 +70,9 @@ class ProductType(TranslatableModel):
     translations = TranslatedFields(
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
         meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
+        og_title=models.CharField('عنوان OG', max_length=255, blank=True, null=True),
+        og_description=models.TextField('توضیحات OG', blank=True, null=True),
+        og_image=models.ImageField('عکس OG', upload_to="og_images/", blank=True, null=True),
         banner_title=models.CharField(max_length=200, default='انواع محصولات', verbose_name="عنوان بنر صفحه"),
         banner_description=models.TextField(blank=True, verbose_name="توضیحات بنر صفحه"),
         title=models.CharField(max_length=255, verbose_name="عنوان"),
