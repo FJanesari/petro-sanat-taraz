@@ -2,6 +2,8 @@ from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
 from django_jalali.db import models as jmodels
 from .signals import CleanedCKEditor5Field
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 class Product(TranslatableModel):
@@ -106,13 +108,19 @@ class ProductTypeImage(models.Model):
     image = models.ImageField(upload_to="product-types/gallery/")
     alt_text = models.CharField(max_length=255, blank=True)
 
+    thumbnail = ImageSpecField(
+        source='image',
+        processors=[ResizeToFill(400, 300)],  # ابعاد ثابت (۴۰۰x۳۰۰)
+        format='JPEG',
+        options={'quality': 80}
+    )
+
     class Meta:
-        verbose_name = "گالری تصویر نوع محصول"
-        verbose_name_plural = "گالری تصاویر نوع محصول"
+        verbose_name = "گالری تصویر پروژه"
+        verbose_name_plural = "گالری تصاویر پروژه"
 
     def __str__(self):
         return f"تصویر {self.product_type}"
-
 
 class ProductInfo(TranslatableModel):
     translations = TranslatedFields(
