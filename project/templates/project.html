@@ -56,14 +56,14 @@
 
                     {% if project.has_previous %}
                     <span>صفحه قبل</span>
-                    <a class="prev" href="{% url 'project:project_detail_page' project.slug page.previous_page_number %}">
+                    <a class="prev" href="{% url 'project:project_page' project.previous_page_number %}">
 
                     <i class="fa-regular fa-arrow-right"></i>
                     </a>
                     {% endif %}
 
                     {% if project.has_next %}
-                     <a class="next" href="{% url 'project:project_detail_page' project.slug page.next_page_number %}">
+                     <a class="next" href="{% url 'project:project_page' project.next_page_number %}">
                      <i class="fa-regular fa-arrow-left"></i>
                     </a><span>صفحه بعد</span>
                 {% endif %}
