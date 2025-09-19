@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'parler',
     'django_ckeditor_5',
     "django.contrib.sitemaps",
+    'imagekit',
 
     'core',
     'product',

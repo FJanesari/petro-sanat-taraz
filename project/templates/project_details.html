@@ -36,15 +36,23 @@
                         <p>{{ project.content|safe }}</p>
                     </div>
 
-                        <div class="case-details__image-sm mt-30">
-                            {% for img in project.gallery.all %}
-                                <div class="image {% if forloop.counter == 2 %}sm-image{% endif %}">
-                                    <img src="{{ img.image.url }}" alt="{{ img.alt_text }}" loading="lazy">
-                                </div>
-                            {% empty %}
-                                <p>هیچ تصویری برای این نوع محصول ثبت نشده است.</p>
-                            {% endfor %}
-                                    </div>
+<div class="case-details__image-sm mt-30">
+    {% for img in project.gallery.all %}
+        <div class="image {% if forloop.counter == 2 %}sm-image{% endif %}">
+            <a href="{{ img.image.url }}"
+               class="glightbox"
+               data-gallery="project-{{ project.id }}"
+               data-title="{{ img.alt_text }}">
+                <img src="{{ img.thumbnail.url }}"
+                     alt="{{ img.alt_text }}"
+                     loading="lazy">
+            </a>
+        </div>
+    {% empty %}
+        <p>هیچ تصویری برای این نوع محصول ثبت نشده است.</p>
+    {% endfor %}
+</div>
+
                     </div>
                 </div>
             </section>
