@@ -40,7 +40,26 @@
                           </div>
                         </section>
                       <!-- Case details area end here -->
-
+            <section class="case-details-area pb-120">
+                <div class="container">
+    <div class="case-details__image-sm mt-30">
+    {% for img in product.gallery.all %}
+        <div class="image {% if forloop.counter == 2 %}sm-image{% endif %}">
+            <a href="{{ img.image.url }}"
+               class="glightbox"
+               data-gallery="project-{{ project.id }}"
+               data-title="{{ img.alt_text }}">
+                <img src="{{ img.thumbnail.url }}"
+                     alt="{{ img.alt_text }}"
+                     loading="lazy">
+            </a>
+        </div>
+    {% empty %}
+        <p>هیچ تصویری برای این نوع محصول ثبت نشده است.</p>
+    {% endfor %}
+</div>
+                </div>
+            </section>
                         <!-- Video area start here -->
             <div class="banner-video mt-0">
                 <div class="container">

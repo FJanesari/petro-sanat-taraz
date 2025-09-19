@@ -1,6 +1,12 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
-from .models import Product, ProductType, ProductTypeImage
+from .models import Product, ProductType, ProductTypeImage, ProductImage
+
+
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 1  # تعداد فرم خالی پیش‌فرض
+    fields = ["image", "alt_text"]
 
 
 @admin.register(Product)
@@ -8,6 +14,7 @@ class ProductAdmin(TranslatableAdmin):
     list_display = ('__str__', 'is_active')
     list_filter = ('is_active',)
     readonly_fields = ('created_at', 'updated_at')
+    inlines = [ProductImageInline]
     fieldsets = (
         ("اطلاعات ترجمه‌پذیر", {
             'fields': (

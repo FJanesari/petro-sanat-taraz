@@ -51,6 +51,30 @@ class Product(TranslatableModel):
         return self.safe_translation_getter('title', any_language=True)
 
 
+class ProductImage(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name="gallery"
+    )
+    image = models.ImageField(upload_to="product/gallery/")
+    alt_text = models.CharField(max_length=255, blank=True)
+
+    thumbnail = ImageSpecField(
+        source='image',
+        processors=[ResizeToFill(400, 300)],  # ابعاد ثابت (۴۰۰x۳۰۰)
+        format='JPEG',
+        options={'quality': 80}
+    )
+
+    class Meta:
+        verbose_name = "گالری تصویر محصولات"
+        verbose_name_plural = "گالری تصاویر محصولات"
+
+    def __str__(self):
+        return f"تصویر {self.product}"
+
+
 class ProductType(TranslatableModel):
     META_ROBOTS_CHOICES = [
         ("index, follow", "Index, Follow (پیشفرض)"),
@@ -118,11 +142,11 @@ class ProductTypeImage(models.Model):
     )
 
     class Meta:
-        verbose_name = "گالری تصویر پروژه"
-        verbose_name_plural = "گالری تصاویر پروژه"
-
+        verbose_name = "گالری تصویر انواع محصولات"
+        verbose_name_plural = "گالری تصاویر انواع محصولات"
     def __str__(self):
         return f"تصویر {self.product_type}"
+
 
 class ProductInfo(TranslatableModel):
     translations = TranslatedFields(
