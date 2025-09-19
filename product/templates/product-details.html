@@ -40,6 +40,25 @@
                           </div>
                         </section>
                       <!-- Case details area end here -->
+
+                        <!-- Video area start here -->
+            <div class="banner-video mt-0">
+                <div class="container">
+                    <div class="banner-video__image image">
+{% if product.video %}
+  <video width="600" style="padding: 20px;
+    display: flex;
+  align-items: center;
+
+width: 100%;" controls>
+      <source src="{{ product.video.url }}" type="video/mp4">
+      مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+  </video>
+{% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- Video area end here -->
           
 
 <section class="blog-area pb-120">

@@ -32,6 +32,7 @@ class Product(TranslatableModel):
         price=models.CharField(max_length=100, blank=True, verbose_name="قیمت"),
     )
     image = models.ImageField(upload_to='articles/images/', blank=True, null=True, verbose_name="تصویر")
+    video = models.FileField('ویدئو',upload_to='videos/', blank=True)
     slug = models.SlugField("اسلاگ", unique=True)
     is_active = models.BooleanField(default=True, verbose_name="فعال باشد؟")
     created_at = jmodels.jDateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
@@ -81,6 +82,7 @@ class ProductType(TranslatableModel):
         description=CleanedCKEditor5Field(config_name='default', blank=True, verbose_name="محتوا"),
     )
     image = models.ImageField(upload_to='products/types/', blank=True, null=True, verbose_name="تصویر شاخص")
+    video = models.FileField('ویدئو',upload_to='videos/', blank=True)
     slug = models.SlugField(unique=True, verbose_name="اسلاگ")
     is_active = models.BooleanField(default=True, verbose_name="فعال باشد؟")
     created_at = jmodels.jDateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
