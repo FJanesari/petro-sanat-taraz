@@ -1,7 +1,7 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
 from parler.forms import TranslatableModelForm
-from .models import ContactUsInfo, ContactMessage, AboutUsInfo, AboutUsPost, Setting, HomeInfo, FanFact
+from .models import ContactUsInfo, ContactMessage, AboutUsInfo, AboutUsPost, Setting, HomeInfo, FanFact, SettingLinks
 from .forms import SingleActiveInstanceMixin
 
 
@@ -19,17 +19,24 @@ class SettingAdminForm(SingleActiveInstanceMixin, TranslatableModelForm):
         fields = "__all__"
 
 
+class SettingLinksInline(admin.TabularInline):
+    model = SettingLinks
+    extra = 1  # تعداد فرم خالی پیش‌فرض
+    fields = ["title", "link_address"]
+
+
 @admin.register(Setting)
 class SettingAdmin(TranslatableAdmin):
     form = SettingAdminForm
     readonly_fields = ('created_at', 'updated_at')
     list_display = ("site_title", "mobile_number", "telephone", "email", "is_active")
+    inlines = [SettingLinksInline]
     fieldsets = (
         ("اطلاعات ترجمه‌پذیر", {
-            "fields": ("site_title", "address", "footer_text", "link_title_one", "link_title_two")
+            "fields": ("site_title", "address", "footer_text")
         }),
         ("عمومی", {
-            "fields": ("link_address_one", "link_address_two", "logo", "mobile_number", "telephone", "email", "instagram", "linkedin", "whatsapp", "facebook", "is_active")
+            "fields": ("logo", "mobile_number", "telephone", "email", "instagram", "linkedin", "whatsapp", "facebook", "is_active")
         }),
         ('اطلاعات زمان', {
             'fields': ('created_at', 'updated_at'),

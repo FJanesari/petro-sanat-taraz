@@ -8,11 +8,7 @@ class Setting(TranslatableModel):
         site_title=models.CharField(blank=True, verbose_name="عنوان جزئیات"),
         address=models.TextField(blank=True, verbose_name="آدرس"),
         footer_text=models.TextField(blank=True, verbose_name="متن فوتر"),
-        link_title_one=models.CharField(max_length=40, blank=True, verbose_name='عنوان اولین پیوندها'),
-        link_title_two=models.CharField(max_length=40, blank=True, verbose_name='عنوان دومین پیوندها')
     )
-    link_address_one = models.URLField(blank=True, verbose_name='آدرس اولین پیوندها')
-    link_address_two = models.URLField(blank=True, verbose_name='آدرس دومین پیوندها')
     logo = models.ImageField(upload_to='site/logo/', blank=True, null=True, verbose_name="لوگو")
     mobile_number = models.CharField(max_length=50, blank=True, verbose_name="شماره موبایل")
     telephone = models.CharField(max_length=50, blank=True, verbose_name="شماره تلفن")
@@ -32,6 +28,23 @@ class Setting(TranslatableModel):
 
     def __str__(self):
         return self.safe_translation_getter('site_title', any_language=True) or "عنوان جزئیات"
+
+
+class SettingLinks(models.Model):
+    links = models.ForeignKey(
+        Setting,
+        on_delete=models.CASCADE,
+        related_name="links"
+    )
+    title = models.CharField('عنوان پیوند', max_length=100, blank=True)
+    link_address = models.URLField('آدرس پیوند', blank=True)
+
+    class Meta:
+        verbose_name = "پیوند"
+        verbose_name_plural = "پیوند"
+
+    def __str__(self):
+        return f"آدرس {self.links}"
 
 
 class AboutUsInfo(TranslatableModel):

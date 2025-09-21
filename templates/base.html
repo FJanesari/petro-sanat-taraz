@@ -218,16 +218,13 @@
                     <div class="footer__item">
                       <strong>پیوندها</strong>
                       <ul>
+                          {% for link in setting.links.all %}
                         <li>
-                          <a id="link_address_one" href="{{ setting.link_address_one }}" target="_blank">
-                            <p>{{ setting.link_title_one }}</p>
+                          <a href="{{ link.link_address }}" target="_blank">
+                            <p>{{ link.title }}</p>
                           </a>
                         </li>
-                        <li>
-                          <a href="{{ setting.link_address_two }}" target="_blank">
-                            <p>{{ setting.link_title_two }}</p>
-                          </a>
-                        </li>
+                      {% endfor %}
                       </ul>
                   </div>
                     <div class="footer__item footer-subscribe">
