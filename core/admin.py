@@ -29,7 +29,7 @@ class SettingAdmin(TranslatableAdmin):
             "fields": ("site_title", "address", "footer_text", "link_title_one", "link_title_two")
         }),
         ("عمومی", {
-            "fields": ("link_address_one", "link_address_two", "logo", "mobile_number", "telephone", "email", "instagram", "linkedin", "telegram", "is_active")
+            "fields": ("link_address_one", "link_address_two", "logo", "mobile_number", "telephone", "email", "instagram", "linkedin", "whatsapp", "facebook", "is_active")
         }),
         ('اطلاعات زمان', {
             'fields': ('created_at', 'updated_at'),
