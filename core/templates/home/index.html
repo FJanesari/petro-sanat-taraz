@@ -90,6 +90,18 @@
           </section>
           <!-- Fanfact area end here -->
 
+        <section class="banner-inner-area" style="padding: 40px 0;">
+  <div class="container">
+    <div class="banner-inner__content">
+                      {% if banner %}
+<h2>{{ banner.title }}</h2>
+<p>{{ banner.content }}</p>
+
+{% endif %}
+    </div>
+  </div>
+</section>
+
                     <!-- Video area start here -->
             <div class="banner-video mt-0">
                 <div class="container">
@@ -164,29 +176,6 @@ width: 100%;" controls>
                     </div>
                 </div>
             </section>  <!-- Story Area End -->
-  
-            <!-- Testimonial area start here -->
-            <section class="testimonial-area pb-120">
-              <div class="container">
-                <div class="row g-4 justify-content-between">
-                  <div class="col-lg-5">
-                    <div class="testimonial__item-left">
-                      {% if banner %}
-                        <h2 class="fw-600 wow splt-txt" data-splitting>
-                          {{ banner.title }}
-                        </h2>
-                        <div class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
-                          <p class="award-title">
-                            {{ banner.content }}
-                          </p>
-                        </div>
-                      {% endif %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-                          
 
             <!-- Blog area start here -->
             <section class="blog-area pb-120">
