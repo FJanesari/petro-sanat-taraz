@@ -2,6 +2,8 @@ from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
 from django_jalali.db import models as jmodels
 from .signals import CleanedCKEditor5Field
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 class Article(TranslatableModel):
@@ -36,6 +38,11 @@ class Article(TranslatableModel):
     canonical_url = models.URLField(
         "آدرس Canonical", blank=True, null=True,
         help_text="اگر خالی باشد، به صورت پیش‌فرض همان آدرس صفحه استفاده می‌شود."
+    )
+    thumbnail = ImageSpecField(
+        source='image',
+        processors=[ResizeToFill(800, 600)],
+        options={'quality': 80}
     )
 
     class Meta:

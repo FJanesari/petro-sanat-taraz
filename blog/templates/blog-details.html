@@ -23,7 +23,9 @@
                             <div class="blog-details__item-left">
                                 <div class="blog-details__item">
                                     <div class="image">
-                                        <img src="{{ article.image.url }}" alt="{{ article.title }}" loading="lazy">
+                                        {% if article.thumbnail %}
+                                        <img src="{{ article.thumbnail.url }}" alt="{{ article.title }}" loading="lazy">
+                                        {% endif %}
                                     </div>
                                     <div class="info">
                                         <ul>

@@ -42,7 +42,7 @@ class Project(TranslatableModel):
 
     thumbnail = ImageSpecField(
         source='image',
-        processors=[ResizeToFill(800, 600)],  # ابعاد ثابت (۴۰۰x۳۰۰)
+        processors=[ResizeToFill(800, 600)],
         options={'quality': 80}
     )
 

@@ -36,7 +36,9 @@
 
                             <div class="blog__item">
                                 <div class="blog__image image">
-                                    <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+                                                                        {% if item.thumbnail %}
+                                    <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
+                                    {% endif %}
             {#                    <div class="tag">#}
         {#                  <a href='{% url 'product:product_type' item.slug %}'>{{ item.title }}</a>#}
         {#                             </div>#}

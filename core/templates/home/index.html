@@ -122,9 +122,9 @@ width: 100%;" controls>
                                     <div class="col-lg-6">
 
                                         <div class="story__item">
-                                            {% if item.image %}
+                                            {% if item.thumbnail %}
                                             <div class="image">
-                                                <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+                                                <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
                                             </div>
                                             {% endif %}
                                             <div
@@ -207,7 +207,9 @@ width: 100%;" controls>
                             <div class="swiper-slide">
                                 <div class="blog__item">
                                     <div class="blog__image image">
-                                        <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+                                        {% if item.thumbnail %}
+                                        <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}" loading="lazy">
+                                        {% endif %}
 {#                                        <div class="tag">#}
 {#                                            <a href='service-details.html'>تکنولوژی</a>#}
 {#                                        </div>#}
