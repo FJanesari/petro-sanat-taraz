@@ -40,6 +40,12 @@ class Project(TranslatableModel):
         help_text="اگر خالی باشد، به صورت پیش‌فرض همان آدرس صفحه استفاده می‌شود."
     )
 
+    thumbnail = ImageSpecField(
+        source='image',
+        processors=[ResizeToFill(800, 600)],  # ابعاد ثابت (۴۰۰x۳۰۰)
+        options={'quality': 80}
+    )
+
     class Meta:
         ordering = ['-created_at']
         verbose_name = "پروژه"
@@ -61,7 +67,6 @@ class ProjectImage(models.Model):
     thumbnail = ImageSpecField(
         source='image',
         processors=[ResizeToFill(400, 300)],  # ابعاد ثابت (۴۰۰x۳۰۰)
-        format='JPEG',
         options={'quality': 80}
     )
 
