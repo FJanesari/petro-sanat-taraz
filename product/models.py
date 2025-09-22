@@ -41,6 +41,11 @@ class Product(TranslatableModel):
         "آدرس Canonical", blank=True, null=True,
         help_text="اگر خالی باشد، به صورت پیش‌فرض همان آدرس صفحه استفاده می‌شود."
     )
+    thumbnail = ImageSpecField(
+        source='image',
+        processors=[ResizeToFill(800, 600)],
+        options={'quality': 80}
+    )
 
     class Meta:
         ordering = ['-created_at']
@@ -63,7 +68,6 @@ class ProductImage(models.Model):
     thumbnail = ImageSpecField(
         source='image',
         processors=[ResizeToFill(400, 300)],  # ابعاد ثابت (۴۰۰x۳۰۰)
-        format='JPEG',
         options={'quality': 80}
     )
 
@@ -115,6 +119,11 @@ class ProductType(TranslatableModel):
         "آدرس Canonical", blank=True, null=True,
         help_text="اگر خالی باشد، به صورت پیش‌فرض همان آدرس صفحه استفاده می‌شود."
     )
+    thumbnail = ImageSpecField(
+        source='image',
+        processors=[ResizeToFill(800, 600)],
+        options={'quality': 80}
+    )
 
     class Meta:
         ordering = ['-created_at']
@@ -144,6 +153,7 @@ class ProductTypeImage(models.Model):
     class Meta:
         verbose_name = "گالری تصویر انواع محصولات"
         verbose_name_plural = "گالری تصاویر انواع محصولات"
+
     def __str__(self):
         return f"تصویر {self.product_type}"
 

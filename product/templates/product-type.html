@@ -25,8 +25,8 @@
             <section class="case-details-area pb-120">
                 <div class="container">
                     <div class="image case-details__image">
-                                {% if type.image %}
-                              <img src="{{ type.image.url }}" alt="{{ type.title }}" loading="lazy">
+                                {% if type.thumbnail %}
+                              <img src="{{ type.thumbnail.url }}" alt="{{ type.title }}" loading="lazy">
                                 {% endif %}
                     </div>
                     <div class="case-details__wrp" style="padding: 70px 0;">
@@ -43,9 +43,11 @@
                class="glightbox"
                data-gallery="project-{{ project.id }}"
                data-title="{{ img.alt_text }}">
+                {% if img.thumbnail %}
                 <img src="{{ img.thumbnail.url }}"
                      alt="{{ img.alt_text }}"
                      loading="lazy">
+                {% endif %}
             </a>
         </div>
     {% empty %}

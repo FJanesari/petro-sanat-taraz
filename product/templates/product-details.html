@@ -26,12 +26,12 @@
                         <section class="case-details-area pb-120">
                           <div class="container">
                             <div class="image case-details__image">
-                                {% if product.image %}
-                              <img src="{{ product.image.url }}" alt="{{ product.title }}" loading="lazy">
+                                {% if product.thumbnail %}
+                              <img src="{{ product.thumbnail.url }}" alt="{{ product.title }}" loading="lazy">
                                 {% endif %}
                             </div>
                             <div class="case-details__wrp">
-                              <br />
+                              <br/>
                               <h3>{{ product.title }}</h3>
                                                     <div class="container ck-content">
                               <p>{{ product.description|safe }}</p>
@@ -49,9 +49,11 @@
                class="glightbox"
                data-gallery="project-{{ project.id }}"
                data-title="{{ img.alt_text }}">
+                {% if img.thumbnail %}
                 <img src="{{ img.thumbnail.url }}"
                      alt="{{ img.alt_text }}"
                      loading="lazy">
+                {% endif %}
             </a>
         </div>
     {% empty %}
@@ -92,9 +94,9 @@ width: 100%;" controls>
                 <div class="col-lg-4 col-md-6">
                     <div class="blog__item">
                         <div class="blog__image image">
-                            {% if item.image %}
+                            {% if item.thumbnail %}
                                 <a href="{% url 'product:product_type' item.slug %}">
-                                    <img src="{{ item.image.url }}" alt="{{ item.title }}">
+                                    <img src="{{ item.thumbnail.url }}" alt="{{ item.title }}">
                                 </a>
                             {% endif %}
                         </div>
