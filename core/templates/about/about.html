@@ -16,26 +16,20 @@
   </div>
 </section>
 
-                <section class="testimonial-area pb-120">
-              <div class="container">
-                <div class="row g-4 justify-content-between">
-                  <div class="col-lg-5">
-                    <div class="testimonial__item-left">
-                      {% if about_us %}
-                        <h2 class="fw-600 wow splt-txt" data-splitting>
-                          {{ about_us.title }}
-                        </h2>
-                        <div class="wow fadeInUp" data-wow-delay="200ms" data-wow-duration="1500ms">
-                          <p class="award-title">
-                            {{ about_us.content }}
-                          </p>
-                        </div>
-                      {% endif %}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
+                            <section class="case-details-area pb-120">
+                          <div class="container">
+
+                            <div class="case-details__wrp">
+                              <br/>
+                                                      {% if about_us %}
+                              <h2>{{ about_us.title }}</h2>
+                                                    <div class="container ck-content">
+                              <p>{{ about_us.content }}</p>
+                                                    </div>
+                                {% endif %}
+                            </div>
+                          </div>
+                        </section>
 
                 <!-- Video area start here -->
             <div class="banner-video mt-0">
