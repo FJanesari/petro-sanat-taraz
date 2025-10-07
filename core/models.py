@@ -1,6 +1,7 @@
 from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
 import django_jalali.db.models as jmodels
+from .signals import CleanedCKEditor5Field
 
 
 class Setting(TranslatableModel):
@@ -64,7 +65,7 @@ class AboutUsInfo(TranslatableModel):
         banner_title=models.CharField(max_length=200, verbose_name="عنوان بنر صفحه"),
         banner_description=models.TextField(verbose_name="توضیحات بنر صفحه"),
         title=models.CharField("عنوان", max_length=200, blank=True),
-        content=models.TextField("محتوا", blank=True,),
+        content=CleanedCKEditor5Field("محتوا", blank=True, config_name='default'),
         meta_title=models.CharField("متا تایتل", default='Petro Sanat Taraz'),
         meta_description=models.TextField(' متا دسکریپشن', default='توضیحات سایت'),
         og_title=models.CharField('عنوان OG', max_length=255, blank=True, null=True),

@@ -1,32 +1,68 @@
-{% extends 'base.html' %}
-
 {% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه یافت نشد | پترو صنعت تاراز</title>
+    <meta name="description" content="صفحه مورد نظر شما یافت نشد. لطفاً به صفحه اصلی پترو صنعت تاراز بازگردید.">
+    <meta name="robots" content="noindex, follow">
 
-{% block content %}
+    <!-- Open Graph -->
+    <meta property="og:title" content="404 - صفحه یافت نشد | پترو صنعت تاراز">
+    <meta property="og:description" content="این صفحه وجود ندارد یا حذف شده است. برای بازگشت به سایت کلیک کنید.">
+    <meta property="og:type" content="website">
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
 
-            <!-- Error area start here -->
-            <section class="error-area">
-                <div class="container">
-                    <div class="row g-5 align-items-center">
-                        <div class="col-lg-5">
-                            <div class="error__content">
-                                <h1>404</h1>
-                                <h2>متاسفیم! <br> صفحه یافت نشد</h2>
-                                <p>این صفحه وجود ندارد یا حذف شده است! <br>
-                                    ما پیشنهاد میکنیم به صفحه اصلی برگردید</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="error__image image">
-                                <img src="{% static 'images/error/error-image.png' %}" alt="image">
-                                <h3 class="mt-50">خطای 404!</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Error area end here -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/new/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
 
+<body class="bg-light">
 
-{% endblock %}
+    <!-- Header-like section -->
+    <header class="py-3 bg-white shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="{% url 'home:home' %}" class="d-flex align-items-center gap-2 text-decoration-none">
+                <img src="{% static 'images/logo/pst-1.png' %}" alt="Petro Sanat Taraz" style="height:50px;">
+                <span class="fw-bold text-dark">پترو صنعت تاراز</span>
+            </a>
+            <a href="{% url 'home:contact' %}" class="btn btn-outline-primary btn-sm">تماس با ما</a>
+        </div>
+    </header>
+
+    <!-- 404 Content -->
+    <main class="d-flex align-items-center justify-content-center vh-100">
+        <div class="text-center">
+            <img src="{% static 'images/error/error-image.png' %}" alt="404" class="img-fluid mb-4" style="max-width:400px;">
+            <h1 class="display-3 fw-bold text-danger mb-3">۴۰۴</h1>
+            <h2 class="mb-3">متأسفیم! صفحه مورد نظر شما یافت نشد.</h2>
+            <p class="text-muted mb-4">ممکن است آدرس صفحه تغییر کرده یا حذف شده باشد. لطفاً به صفحه اصلی برگردید.</p>
+            <a href="{% url 'home:home' %}" class="btn btn-primary btn-lg">
+                بازگشت به صفحه اصلی
+            </a>
+        </div>
+    </main>
+
+    <!-- Footer-like section -->
+    <footer class="text-center py-4 mt-auto bg-white border-top">
+        <p class="mb-0 text-muted small">
+            © کلیه حقوق این سایت متعلق به شرکت دانش‌بنیان پترو صنعت تاراز می‌باشد.
+        </p>
+    </footer>
+
+    <!-- JS -->
+    <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script>
+        new WOW().init();
+    </script>
+</body>
+</html>

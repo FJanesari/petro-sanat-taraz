@@ -121,25 +121,25 @@ class AboutUsInfoAdmin(TranslatableAdmin):
     )
 
 
-@admin.register(AboutUsPost)
-class AboutUsPostAdmin(TranslatableAdmin):
-    list_display = ("__str__", "is_active", "created_at")
-    readonly_fields = ('created_at', 'updated_at')
-    fieldsets = (
-        ("اطلاعات ترجمه‌پذیر", {
-            'fields': (
-                'post_title', 'post_content',
-            )
-        }),
-        ("عمومی", {
-            'fields': (
-                "is_active", "image", "slug"
-            )
-        }),
-        ('اطلاعات زمان', {
-            'fields': ('created_at', 'updated_at'),
-        }),
-    )
+# @admin.register(AboutUsPost)
+# class AboutUsPostAdmin(TranslatableAdmin):
+#     list_display = ("__str__", "is_active", "created_at")
+#     readonly_fields = ('created_at', 'updated_at')
+#     fieldsets = (
+#         ("اطلاعات ترجمه‌پذیر", {
+#             'fields': (
+#                 'post_title', 'post_content',
+#             )
+#         }),
+#         ("عمومی", {
+#             'fields': (
+#                 "is_active", "image", "slug"
+#             )
+#         }),
+#         ('اطلاعات زمان', {
+#             'fields': ('created_at', 'updated_at'),
+#         }),
+#     )
 
 
 class HomeAdminForm(SingleActiveInstanceMixin, TranslatableModelForm):
