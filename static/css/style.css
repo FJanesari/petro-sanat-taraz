@@ -6786,4 +6786,75 @@ body.ltr .contact__item-left * {
     text-align: center;
   }
 }
+.contact-floating {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    background: #00B33C;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-family: inherit;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.contact-floating .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-floating svg {
+    width: 24px;
+    height: 24px;
+}
+
+
+.contact-floating .text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.contact-floating .title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.contact-floating .number {
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+@media (max-width: 768px) {
+    .contact-floating {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .contact-floating .text {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .contact-floating {
+        padding: 12px 20px;
+        border-radius: 50px;
+    }
+
+    .contact-floating .text {
+        display: flex;
+    }
+}
+
 /*# sourceMappingURL=style.css.map */

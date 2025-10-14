@@ -15,6 +15,7 @@ class Setting(TranslatableModel):
     logo = models.ImageField(upload_to='site/logo/', blank=True, null=True, verbose_name="لوگو")
     mobile_number = models.CharField(max_length=50, blank=True, verbose_name="شماره موبایل")
     telephone = models.CharField(max_length=50, blank=True, verbose_name="شماره تلفن")
+    call = models.CharField(max_length=20, blank=True, verbose_name="تماس سریع")
     email = models.EmailField(blank=True, verbose_name="ایمیل")
     instagram = models.URLField(blank=True, verbose_name="اینستاگرام")
     linkedin = models.URLField(blank=True, verbose_name="لینکدین")
