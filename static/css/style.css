@@ -5728,12 +5728,15 @@ button {
 .footer-area, .footer-three-area {
   overflow: hidden;
 }
+
+
 .footer__wrp {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 30px;
 }
+
 .footer__item h3 {
   margin-bottom: 24px;
   color: var(--white);
@@ -5757,7 +5760,7 @@ button {
   gap: 15px;
 }
 .footer__item.footer-about {
-  max-width: 300px;
+  max-width: 400px;
 }
 .footer__item.footer-subscribe {
   max-width: 405px;
@@ -6665,11 +6668,122 @@ body.ltr .contact__item-left * {
   direction: ltr !important;
 }
 
-.footer__item strong {
+.footer-area strong {
+  display: block;
   margin-bottom: 24px;
   color: var(--white);
   font-size: 28px;
   line-height: 40px;
   font-weight: 500;
+}
+
+.footer__item .footerLinks{
+  margin-bottom: 10px;
+
+}
+
+.footer__item .footerLinks {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.footer__item .listSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+
+.linksArea {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: var(--primary-color);
+  font-weight: 400;
+  padding: 15px 20px;
+  border: 1px solid black;
+  border-radius: 12px;
+  font-family: var(--inter);
+  font-size: 18px;
+  box-shadow: 0 4px 8px rgba(12, 12, 12, 0.87);
+  transition: all 0.3s ease;
+  min-height: 100px;
+  width: 100%;
+  height: 100px;
+  text-align: right;
+  direction: rtl;
+}
+
+.linksArea:hover {
+  background-color: rgb(143, 141, 141);
+  cursor: pointer;
+  transform: translateY(-3px);
+}
+
+.linksArea a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.linksArea img {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  object-fit: cover;
+  margin-left: 15px;
+  flex-shrink: 0;
+}
+
+.linksArea p {
+  margin: 0;
+  line-height: 1.5;
+  flex: 1;
+  text-align: right;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* برای ریسپانسیو شدن در موبایل */
+@media (max-width: 768px) {
+  .footer__item .listSection {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .linksArea {
+    padding: 12px 15px;
+    min-height: 90px;
+  }
+
+  .linksArea img {
+    width: 50px;
+    height: 50px;
+    margin-left: 12px;
+  }
+
+  .linksArea p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .linksArea {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+    min-height: auto;
+  }
+
+  .linksArea img {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
+  .linksArea p {
+    text-align: center;
+  }
 }
 /*# sourceMappingURL=style.css.map */

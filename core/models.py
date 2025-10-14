@@ -2,6 +2,8 @@ from django.db import models
 from parler.models import TranslatableModel, TranslatedFields
 import django_jalali.db.models as jmodels
 from .signals import CleanedCKEditor5Field
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 class Setting(TranslatableModel):
@@ -31,14 +33,22 @@ class Setting(TranslatableModel):
         return self.safe_translation_getter('site_title', any_language=True) or "عنوان جزئیات"
 
 
-class SettingLinks(models.Model):
+class SettingLinksToolbar(TranslatableModel):
     links = models.ForeignKey(
         Setting,
         on_delete=models.CASCADE,
         related_name="links"
     )
-    title = models.CharField('عنوان پیوند', max_length=100, blank=True)
+    translations = TranslatedFields(
+        link_title=models.CharField('عنوان پیوند', max_length=100, blank=True),
+    )
+    link_image = models.ImageField(upload_to='site/links/', blank=True, null=True, verbose_name="عکس پیوند")
     link_address = models.URLField('آدرس پیوند', blank=True)
+    thumbnail = ImageSpecField(
+        source='link_image',
+        processors=[ResizeToFill(60, 60)],
+        options={'quality': 80}
+    )
 
     class Meta:
         verbose_name = "پیوند"

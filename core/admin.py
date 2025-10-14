@@ -1,7 +1,8 @@
 from django.contrib import admin
 from parler.admin import TranslatableAdmin
+from parler.admin import TranslatableTabularInline
 from parler.forms import TranslatableModelForm
-from .models import ContactUsInfo, ContactMessage, AboutUsInfo, AboutUsPost, Setting, HomeInfo, FanFact, SettingLinks
+from .models import ContactUsInfo, ContactMessage, AboutUsInfo, AboutUsPost, Setting, HomeInfo, FanFact, SettingLinksToolbar
 from .forms import SingleActiveInstanceMixin
 
 
@@ -19,10 +20,10 @@ class SettingAdminForm(SingleActiveInstanceMixin, TranslatableModelForm):
         fields = "__all__"
 
 
-class SettingLinksInline(admin.TabularInline):
-    model = SettingLinks
+class SettingLinksInline(TranslatableTabularInline):
+    model = SettingLinksToolbar
     extra = 1  # تعداد فرم خالی پیش‌فرض
-    fields = ["title", "link_address"]
+    fields = ["link_title", "link_address", "link_image"]
 
 
 @admin.register(Setting)

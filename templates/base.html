@@ -150,14 +150,34 @@
 
         <!-- Footer area start here -->
         <footer class="footer-area secondary-bg pt-120">
+
             <div class="container">
+                        <div class="footer__item">
+                                    <div class="footerLinks">
+                <strong>پیوندها</strong>
+                    <ul class="listSection">
+                          {% for link in setting.links.all %}
+                        <li class="linksArea">
+                          <a href="{{ link.link_address }}" target="_blank">
+                              {% if link.thumbnail %}
+                            <img src="{{ link.thumbnail.url }}" alt="links image">
+                            {% endif %}
+
+                                <p>{{ link.link_title }}</p>
+
+                          </a>
+                        </li>
+                      {% endfor %}
+                      </ul>
+                  </div>
+            </div>
                 <div class="footer__wrp pb-60">
                     <div class="footer__item footer-about">
                         {% if setting.footer_text %}
                         <p>{{ setting.footer_text }}
                         </p>
                         {% endif %}
-                        <a href="">
+
                             <svg width="14" height="18" viewBox="0 0 14 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.6309 2.55094C10.3989 1.33583 8.75455 0.666626 7.00066 0.666626C5.24674 0.666626 3.60236 1.33583 2.37036 2.55094C0.0779159 4.812 -0.280968 7.52721 1.30371 10.621C2.6035 13.1587 4.94433 15.4671 6.65356 17.1527L6.72063 17.2189C6.79799 17.2951 6.89931 17.3333 7.00066 17.3333C7.10202 17.3333 7.20341 17.2951 7.2807 17.2189L7.3479 17.1526C9.05707 15.467 11.3979 13.1585 12.6976 10.6209C14.2823 7.52714 13.9234 4.812 11.6309 2.55094ZM11.9907 10.2687C10.8001 12.5932 8.64884 14.7628 7.00066 16.3902C5.35252 14.7628 3.20123 12.5931 2.01069 10.2688C0.577693 7.47102 0.878523 5.12721 2.93047 3.10338C4.05263 1.99661 5.52665 1.44319 7.00063 1.44319C8.47465 1.44319 9.94866 1.99657 11.0708 3.10338C13.1227 5.12717 13.4236 7.47099 11.9907 10.2687ZM7.00063 4.6314C5.39641 4.6314 4.09125 5.91871 4.09125 7.501C4.09125 9.08329 5.39641 10.3706 7.00063 10.3706C8.60488 10.3706 9.91005 9.08329 9.91005 7.501C9.91005 5.91871 8.60491 4.6314 7.00063 4.6314ZM7.00063 9.58935C5.83315 9.58935 4.88334 8.65253 4.88334 7.501C4.88334 6.34947 5.83315 5.41265 7.00063 5.41265C8.16814 5.41265 9.11796 6.34947 9.11796 7.501C9.11796 8.65253 8.16814 9.58935 7.00063 9.58935Z"
                                     fill="white" fill-opacity="0.7"/>
@@ -165,7 +185,7 @@
                             {% if setting.address %}
                             <p>{{ setting.address }}</p>
                             {% endif %}
-                            </a>
+
                             <div class="social-icons mt-20">
                               <a href="{{ setting.linkedin }}" target="_blank">
                                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -218,20 +238,9 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="footer__item">
-                      <strong>پیوندها</strong>
-                      <ul>
-                          {% for link in setting.links.all %}
-                        <li>
-                          <a href="{{ link.link_address }}" target="_blank">
-                            <p>{{ link.title }}</p>
-                          </a>
-                        </li>
-                      {% endfor %}
-                      </ul>
-                  </div>
+
                     <div class="footer__item footer-subscribe">
-                        <strong></strong>
+                        <strong>اطلاعات تماس</strong>
                         <p>{{ setting.email }}</p>
                         <p>{{ setting.mobile_number }}</p>
                         <p>{{ setting.telephone }}</p>
