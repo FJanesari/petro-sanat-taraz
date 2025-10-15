@@ -7,19 +7,17 @@
 
 {% block content %}
 
-            <!-- Banner area start here -->
-<section class="banner-area bg-image"
-         style="background-image: url('{% if banner.image %}{{ banner.image.url }}{% endif %}');">
-
-    <div class="container">
-        <div class="banner__content pb-120 text-center">
-            <h5 class="splt-txt wow" data-splitting>
-                {{ banner.meta_title }}
-            </h5>
-            <h1>{{ banner.banner_title }}</h1>
-            <p>{{ banner.banner_description }}</p>
-
-            <div class="d-flex align-items-center gap-3 justify-content-center">
+                <!-- Banner area start here -->
+            <section class="banner-four-area bg-image" data-background="{% static 'images/bg/petro-banner-bg.png' %}">
+                <div class="banner-four__line">
+                    <img src="{% static 'images/shape/banner-four-arrow.png' %}" alt="image" loading="lazy">
+                </div>
+                <div class="container">
+                    <div class="banner-four__content mb-50">
+                        <div class="d-flex gap-3 flex-wrap align-items-center justify-content-between">
+                            <h1>{{ banner.banner_title }}</h1>
+                            <p>{{ banner.banner_description }}</p>
+                                        <div class="d-flex align-items-center gap-3 justify-content-center">
                 <a class="btn-one" href="{% url 'home:contact' %}">
                     مشاوره رایگان
                     <span>
@@ -35,14 +33,13 @@
                     </span>
                 </a>
             </div>
-        </div>
-
-        <div class="brand-area pb-120">
-            <p class="mb-4">{{ banner.banner_subtitle }}</p>
-        </div>
-    </div>
-</section>
-
+                        </div>
+                    </div>
+                    <div class="banner-four__image">
+                        <img class="w-100" src="{{ banner.image.url }}" alt="{{ banner.meta_title }}" loading="lazy">
+                    </div>
+                </div>
+            </section>
             <!-- Banner area end here -->
 
             <!-- Fanfact area start here -->
@@ -85,7 +82,7 @@
                             </div>
                         {% endfor %}
                     </div>
-
+</div>
               </div>
           </section>
           <!-- Fanfact area end here -->

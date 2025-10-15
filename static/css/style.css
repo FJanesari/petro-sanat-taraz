@@ -2086,10 +2086,10 @@ button {
   display: inline-block;
   font-weight: 400;
   padding: 10px 24px;
-  border: 1px solid var(--primary-color);
   border-radius: 12px;
   font-family: var(--inter);
   font-size: 18px;
+  background-color: rgba(255, 255, 255, 0.6980392157);
 }
 @media (max-width: 575px) {
   .btn-one, .btn-four, .btn-two {
@@ -2153,10 +2153,10 @@ button {
   color: var(--white);
 }
 .btn-two {
-  border: 1px solid var(--heading-color);
+  border: none;
 }
 .btn-two:hover {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.6980392157);
   color: var(--heading-color);
 }
 .btn-two:hover span .arry1 {
@@ -3238,7 +3238,7 @@ button {
   font-size: 18px;
   line-height: 30px;
   color: rgba(255, 255, 255, 0.6980392157);
-  max-width: 375px;
+  max-width: 800px;
 }
 @media (max-width: 991px) {
   .banner-four__content p {
@@ -3254,6 +3254,22 @@ button {
   top: -9%;
   left: 24%;
 }
+.banner-four__image img{
+  border-radius: 30px;
+  display: block;
+  margin-bottom: 10px;
+
+}
+.banner-four__image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 30px;
+  pointer-events: none;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 20%, rgba(0,0,0,0.3) 60%, #212424 100%),
+              linear-gradient(to top, rgba(0,0,0,0) 20%, rgba(0,0,0,0.3) 60%, #212424 100%);
+}
+
 @media (max-width: 575px) {
   .banner-four__image .text-btn {
     top: -30%;
