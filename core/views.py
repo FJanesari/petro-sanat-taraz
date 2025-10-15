@@ -14,7 +14,7 @@ def home(request):
     banner = HomeInfo.objects.filter(is_active=True).first()
     fanfacts = FanFact.objects.filter(is_active=True)
     project_posts = Project.objects.filter(is_active=True)[:4]
-    blog = Article.objects.filter(is_active=True)[:4]
+    blog = Article.objects.filter(is_active=True)[:10]
     setting = Setting.objects.filter(is_active=True).first()
     return render(request, 'home/index.html', {
         "products": products,

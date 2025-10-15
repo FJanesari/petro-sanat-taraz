@@ -28,7 +28,7 @@ def project_detail(request, slug):
 def project(request, page=1):
     project = Project.objects.filter(is_active=True)
     project_info = get_object_or_404(ProjectInfo)
-    paginator = Paginator(project, 6)
+    paginator = Paginator(project, 9)
     page_obj = paginator.get_page(page)
     return render(request, "project.html", {
         "project": page_obj,

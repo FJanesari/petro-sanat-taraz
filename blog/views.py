@@ -41,7 +41,7 @@ def blog_detail(request, slug):
 def blog(request, page=1):
     article = Article.objects.filter(is_active=True)
     blog_info = get_object_or_404(BlogInfo)
-    paginator = Paginator(article, 6)
+    paginator = Paginator(article, 9)
     page_obj = paginator.get_page(page)
     return render(request, "blog.html", {
         "article": page_obj,

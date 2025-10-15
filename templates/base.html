@@ -274,9 +274,7 @@
     </div>
 
     <!-- Back to top btn area start here -->
-    <!-- <button id="back-top" class="btn-backToTop">
-        <i class="fa-solid fa-chevron-up"></i>
-    </button> -->
+<button onclick="scrollToTop()" id="backToTopBtn" title="برو بالا">↑</button>
     <!-- Back to top btn area end here -->
     <!-- JS -->
     <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js" defer></script>
@@ -318,6 +316,22 @@
         });
     });
     </script>
+<script>
+window.onscroll = function() { scrollFunction(); };
+
+function scrollFunction() {
+  let btn = document.getElementById("backToTopBtn");
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+}
+
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 </body>
 
 
