@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from core.sitemaps import StaticViewSitemap, AboutUsPostSitemap, ProductSitemap, ProductTypeSitemap,\
     ArticleSitemap, ProjectSitemap, ProjectDetailSitemap
-from core.views import robots_txt
+from core.views import robots_txt, ajax_search
 from django.contrib.sitemaps import views as sitemap_views
 
 sitemaps = {
@@ -28,6 +28,7 @@ urlpatterns = [
     path("sitemap-<section>.xml", sitemap_views.sitemap, {"sitemaps": sitemaps},
          name="django.contrib.sitemaps.views.sitemap"),
     path("robots.txt", robots_txt, name="robots_txt"),
+    path("ajax/search/", ajax_search, name="ajax_search"),
 ]
 
 if settings.DEBUG:  # فقط در حالت توسعه

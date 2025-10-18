@@ -7,6 +7,9 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import ContactForm
 from django.http import HttpResponse
+from django.http import JsonResponse
+from django.templatetags.static import static
+from django.db.models import Q
 
 
 def home(request):
@@ -96,6 +99,75 @@ def project_detail(request, slug):
         "default_meta_title": banner.meta_title,
         "default_meta_description": banner.meta_description,
     })
+
+
+def ajax_search(request):
+    q = request.GET.get("q", "").strip()
+    data = []
+
+    if not q:
+        return JsonResponse({"results": []})
+
+    try:
+        # جستجو در محصولات و مقالات فقط بین موارد فعال
+        products = (
+            Product.objects.filter(
+                Q(translations__title__icontains=q),
+                is_active=True
+            )
+            .distinct()
+            .order_by("-created_at")
+        )
+
+        articles = (
+            Article.objects.filter(
+                Q(translations__title__icontains=q),
+                is_active=True
+            )
+            .distinct()
+            .order_by("-created_at")
+        )
+
+        projects = (
+            Project.objects.filter(
+                Q(translations__title__icontains=q),
+                is_active=True
+            )
+                .distinct()
+                .order_by("-created_at")
+        )
+
+        # افزودن نتایج محصولات
+        for p in products:
+            data.append({
+                "title": p.safe_translation_getter("title", any_language=True),
+                "url": p.get_absolute_url() if hasattr(p, "get_absolute_url") else f"/product/{p.slug}/",
+                "type": "محصول",
+            })
+
+        # افزودن نتایج مقالات
+        for a in articles:
+            data.append({
+                "title": a.safe_translation_getter("title", any_language=True),
+                "url": a.get_absolute_url() if hasattr(a, "get_absolute_url") else f"/blog/{a.slug}/",
+                "type": "مقاله",
+            })
+
+        for project in projects:
+            data.append({
+                "title": project.safe_translation_getter("title", any_language=True),
+                "url": project.get_absolute_url() if hasattr(project, "get_absolute_url") else f"/project/{project.slug}/",
+                "type": "پروژه",
+            })
+
+        if not data:
+            return JsonResponse({"results": [], "message": "نتیجه‌ای یافت نشد."})
+
+        return JsonResponse({"results": data})
+
+    except Exception as e:
+        print("SEARCH ERROR:", e)
+        return JsonResponse({"results": [], "error": str(e)}, status=500)
 
 
 def robots_txt(request):
