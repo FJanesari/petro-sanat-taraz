@@ -109,6 +109,35 @@
               </ul>
             </nav>
           </div>
+<!-- آیکون جست‌وجو فقط برای موبایل -->
+<button id="mobile-search-btn" class="mobile-search-btn" aria-label="جست‌وجو در سایت">
+    <svg width="20" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.0635 21C17.3102 21 21.5635 16.7467 21.5635 11.5C21.5635 6.25329 17.3102 2 12.0635 2C6.81677 2 2.56348 6.25329 2.56348 11.5C2.56348 16.7467 6.81677 21 12.0635 21Z" stroke="#6F7285" stroke-width="1.5"/>
+      <path d="M19.0635 18.5L22.5635 22" stroke="#6F7285" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+</button>
+
+<!-- فرم اصلی جست‌وجو -->
+<form role="search" class="search-form" autocomplete="off">
+  <input
+    type="search"
+    name="q"
+    id="live-search"
+    placeholder="جستجو ..."
+    aria-label="جستجو در سایت"
+  />
+  <button aria-label="search" type="submit">
+    <svg width="20" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12.0635 21C17.3102 21 21.5635 16.7467 21.5635 11.5C21.5635 6.25329 17.3102 2 12.0635 2C6.81677 2 2.56348 6.25329 2.56348 11.5C2.56348 16.7467 6.81677 21 12.0635 21Z" stroke="#6F7285" stroke-width="1.5"/>
+      <path d="M19.0635 18.5L22.5635 22" stroke="#6F7285" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </button>
+  <div id="live-results" class="live-results hidden"></div>
+</form>
+
+
+
+
 
           <div class="menu-btns d-none d-lg-flex">
             <a class='menu-btn-one' href='{% url 'home:contact' %}'>تماس با ما</a>
@@ -126,7 +155,7 @@
   <!-- Sidebar area start here -->
   <div class="sidebar-area offcanvas offcanvas-end" id="menubar">
     <div class="offcanvas-header">
-      <a class="logo" href="{% url 'home:home' %}">
+      <a class="sidebarLogo" href="{% url 'home:home' %}">
         <img src="{% static "images/logo/pst-1.png" %}" alt="logo">
       </a>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas">
@@ -306,6 +335,7 @@
     <script src="{% static 'js/gsap/ScrollSmoother.min.js' %}"></script>
     <!-- Script Js -->
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/search.js' %}"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
         const lightbox = GLightbox({

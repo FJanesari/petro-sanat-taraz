@@ -36,6 +36,7 @@ searchInput.addEventListener('input', () => {
               .map(
                 item => `
                   <div class="item">
+                    ${item.image ? `<img src="${item.image}" alt="${item.title}">` : ""}
                     <a href="${item.url}">${item.title}</a>
                   </div>
                 `
@@ -87,4 +88,3 @@ if (mobileSearchBtn && searchForm) {
     }
   });
 }
-
