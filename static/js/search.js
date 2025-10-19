@@ -22,14 +22,12 @@ searchInput.addEventListener('input', () => {
           return;
         }
 
-        // 🔹 گروه‌بندی نتایج بر اساس نوع
         const grouped = data.results.reduce((acc, item) => {
           if (!acc[item.type]) acc[item.type] = [];
           acc[item.type].push(item);
           return acc;
         }, {});
 
-        // 🔹 ساخت HTML گروه‌بندی شده
         resultsBox.innerHTML = Object.keys(grouped)
           .map(type => {
             const sectionItems = grouped[type]
@@ -68,7 +66,6 @@ document.addEventListener('click', e => {
   }
 });
 
-// باز و بسته کردن فرم جستجو در موبایل
 const mobileSearchBtn = document.getElementById('mobile-search-btn');
 const searchForm = document.querySelector('.search-form');
 const searchInputMobile = document.getElementById('live-search');
@@ -81,7 +78,6 @@ if (mobileSearchBtn && searchForm) {
     }
   });
 
-  // بستن فرم با دکمه ESC
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       searchForm.classList.remove('mobile-active');

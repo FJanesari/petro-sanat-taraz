@@ -109,7 +109,6 @@ def ajax_search(request):
         return JsonResponse({"results": []})
 
     try:
-        # جستجو در محصولات و مقالات فقط بین موارد فعال
         products = (
             Product.objects.filter(
                 Q(translations__title__icontains=q),
@@ -137,26 +136,24 @@ def ajax_search(request):
                 .order_by("-created_at")
         )
 
-        # افزودن نتایج محصولات
         for p in products:
             data.append({
                 "title": p.safe_translation_getter("title", any_language=True),
-                "url": p.get_absolute_url() if hasattr(p, "get_absolute_url") else f"/product/{p.slug}/",
+                "url": p.get_absolute_url() if hasattr(p, "get_absolute_url") else f"/fa/product/{p.slug}/",
                 "type": "محصول",
             })
 
-        # افزودن نتایج مقالات
         for a in articles:
             data.append({
                 "title": a.safe_translation_getter("title", any_language=True),
-                "url": a.get_absolute_url() if hasattr(a, "get_absolute_url") else f"/blog/{a.slug}/",
+                "url": a.get_absolute_url() if hasattr(a, "get_absolute_url") else f"/fa/{a.slug}/",
                 "type": "مقاله",
             })
 
         for project in projects:
             data.append({
                 "title": project.safe_translation_getter("title", any_language=True),
-                "url": project.get_absolute_url() if hasattr(project, "get_absolute_url") else f"/project/{project.slug}/",
+                "url": project.get_absolute_url() if hasattr(project, "get_absolute_url") else f"/fa/project/{project.slug}/",
                 "type": "پروژه",
             })
 
