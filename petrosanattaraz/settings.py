@@ -181,7 +181,9 @@ CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "https://test-seo.petrosanattaraz.com",
-    "http://test-seo.petrosanattaraz.com"
+    "http://test-seo.petrosanattaraz.com",
+    "https://petrosanattaraz.com",
+    "http://petrosanattaraz.com"
 ]
 
 
