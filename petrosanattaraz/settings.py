@@ -46,10 +46,12 @@ INSTALLED_APPS = [
     'core',
     'product',
     'blog',
-    'project'
+    'project',
+    'redirects',
 ]
 
 MIDDLEWARE = [
+    'redirects.middleware.RedirectMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

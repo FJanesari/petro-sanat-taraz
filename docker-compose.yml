@@ -13,6 +13,8 @@ services:
     command: ["gunicorn", "petrosanattaraz.wsgi:application", "--bind", "0.0.0.0:8000"]
     volumes:
       - .:/code
+      - ./nginx:/etc/nginx/conf.d
+      - shared_redirects:/etc/nginx/conf.d
       - static_volume:/code/staticfiles
       - media_volume:/code/media
     env_file:
@@ -27,6 +29,7 @@ services:
     image: nginx:alpine
     volumes:
       - ./nginx:/etc/nginx/conf.d
+      - shared_redirects:/etc/nginx/conf.d
       - static_volume:/code/staticfiles
       - media_volume:/code/media
       - /etc/letsencrypt:/etc/letsencrypt:ro
@@ -52,3 +55,4 @@ volumes:
   postgres_data:
   static_volume:
   media_volume:
+  shared_redirects:
