@@ -48,7 +48,7 @@ class Product(TranslatableModel):
     )
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['-updated_at']
         verbose_name = "محصول"
         verbose_name_plural = "محصولات"
 

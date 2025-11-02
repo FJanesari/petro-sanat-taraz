@@ -8,17 +8,17 @@ from django.contrib import messages
 from .forms import ContactForm
 from django.http import HttpResponse
 from django.http import JsonResponse
-from django.templatetags.static import static
 from django.db.models import Q
+from django.utils.translation import get_language
 
 
 def home(request):
-    products = Product.objects.all()
-    banner = HomeInfo.objects.filter(is_active=True).first()
-    fanfacts = FanFact.objects.filter(is_active=True)
-    project_posts = Project.objects.filter(is_active=True)[:4]
-    blog = Article.objects.filter(is_active=True)[:10]
-    setting = Setting.objects.filter(is_active=True).first()
+    products = Product.objects.translated(get_language()).filter(is_active=True)
+    banner = HomeInfo.objects.translated(get_language()).filter(is_active=True).first()
+    fanfacts = FanFact.objects.translated(get_language()).filter(is_active=True)
+    project_posts = Project.objects.translated(get_language()).filter(is_active=True)[:4]
+    blog = Article.objects.translated(get_language()).filter(is_active=True)[:10]
+    setting = Setting.objects.translated(get_language()).filter(is_active=True).first()
     return render(request, 'home/index.html', {
         "products": products,
         "banner": banner,

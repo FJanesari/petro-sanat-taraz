@@ -1,4 +1,4 @@
-{% load static %}
+{% load static i18n %}
 
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
@@ -32,6 +32,9 @@
       {% endblock %}
 
     <!-- CSS -->
+<link rel="alternate" hreflang="fa" href="https://petrosanattaraz.com/fa{{ request.path }}" />
+<link rel="alternate" hreflang="en" href="https://petrosanattaraz.com/en{{ request.path }}" />
+<link rel="alternate" hreflang="ar" href="https://petrosanattaraz.com/ar{{ request.path }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
 
     <link rel="stylesheet" href="{% static 'css/new/bootstrap.min.css' %}">
@@ -136,7 +139,18 @@
 </form>
 
 
-
+        <form action="{% url 'set_language' %}" method="post" class="d-inline">
+  {% csrf_token %}
+  <select name="language" onchange="this.form.submit()">
+    {% get_current_language as LANGUAGE_CODE %}
+    {% get_available_languages as LANGUAGES %}
+    {% for lang_code, lang_name in LANGUAGES %}
+      <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>
+        {{ lang_name }}
+      </option>
+    {% endfor %}
+  </select>
+</form>
 
 
           <div class="menu-btns d-none d-lg-flex">

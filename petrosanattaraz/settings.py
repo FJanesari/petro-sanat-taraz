@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.locale.LocaleMiddleware',
     'redirects.middleware.RedirectMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'core.force_fa_admin.ForceFarsiAdminLocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'petrosanattaraz.urls'
@@ -134,11 +136,12 @@ PARLER_LANGUAGES = {
         {'code': 'ar'},
     ),
     'default': {
-        'fallbacks': ['fa'],
+        'fallbacks': [],
         'hide_untranslated': False,
     }
 }
 LANGUAGE_CODE = 'fa'
+
 
 PARLER_DEFAULT_LANGUAGE_CODE = 'fa'
 

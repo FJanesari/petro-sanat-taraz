@@ -6,6 +6,7 @@ from core.sitemaps import StaticViewSitemap, AboutUsPostSitemap, ProductSitemap,
     ArticleSitemap, ProjectSitemap, ProjectDetailSitemap
 from core.views import robots_txt, ajax_search
 from django.contrib.sitemaps import views as sitemap_views
+from django.conf.urls.i18n import set_language, i18n_patterns
 
 sitemaps = {
     "static": StaticViewSitemap,
@@ -20,16 +21,20 @@ sitemaps = {
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("ckeditor5/", include('django_ckeditor_5.urls')),
-    path('fa/product/', include("product.urls", namespace='product')),
-    path('fa/project/', include("project.urls", namespace="project")),
-    path("fa/", include("core.urls", namespace="home")),
-    path('fa/', include("blog.urls", namespace='blog')),
+    path("robots.txt", robots_txt, name="robots_txt"),
+    path("ajax/search/", ajax_search, name="ajax_search"),
     path("sitemap.xml", sitemap_views.index, {"sitemaps": sitemaps}),
     path("sitemap-<section>.xml", sitemap_views.sitemap, {"sitemaps": sitemaps},
          name="django.contrib.sitemaps.views.sitemap"),
-    path("robots.txt", robots_txt, name="robots_txt"),
-    path("ajax/search/", ajax_search, name="ajax_search"),
+    path("i18n/setlang/", set_language, name="set_language"),
 ]
+
+urlpatterns += i18n_patterns(
+    path("product/", include("product.urls", namespace='product')),
+    path("project/", include("project.urls", namespace="project")),
+    path("", include("core.urls", namespace="home")),
+    path("", include("blog.urls", namespace='blog')),
+)
 
 if settings.DEBUG:  # فقط در حالت توسعه
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
