@@ -37,7 +37,7 @@ def home(request):
 
 
 def contact(request):
-    banner = ContactUsInfo.objects.filter(is_active=True).first()
+    banner = ContactUsInfo.objects.translated(get_language()).filter(is_active=True).first()
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -63,7 +63,7 @@ def contact(request):
 
 
 def about(request):
-    banner = AboutUsInfo.objects.filter(is_active=True).first()
+    banner = AboutUsInfo.objects.translated(get_language()).filter(is_active=True).first()
 
     return render(request, "about/about.html", {
         "about_us": banner,
@@ -78,7 +78,7 @@ def about(request):
 
 
 def project(request):
-    banner = ProjectInfo.objects.filter(is_active=True).first()
+    banner = ProjectInfo.objects.translated(get_language()).filter(is_active=True).first()
 
     return render(request, "project.html", {
         "projects": banner,
@@ -88,9 +88,9 @@ def project(request):
 
 
 def project_detail(request, slug):
-    banner = ProjectInfo.objects.filter(is_active=True).first()
-    posts = Project.objects.filter(is_active=True)
-    post = get_object_or_404(Project, is_active=True, slug=slug)
+    banner = ProjectInfo.objects.translated(get_language()).filter(is_active=True).first()
+    posts = Project.objects.translated(get_language()).filter(is_active=True)
+    post = get_object_or_404(Project.objects.translated(get_language()), is_active=True, slug=slug)
 
     return render(request, "project_details.html", {
         "projects": banner,

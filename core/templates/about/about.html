@@ -24,7 +24,7 @@
                                                       {% if about_us %}
                               <h2>{{ about_us.title }}</h2>
                                                     <div class="container ck-content">
-                              <p>{{ about_us.content }}</p>
+                              <p>{{ about_us.content | safe }}</p>
                                                     </div>
                                 {% endif %}
                             </div>
