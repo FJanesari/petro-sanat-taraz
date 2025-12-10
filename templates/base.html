@@ -112,6 +112,20 @@
               </ul>
             </nav>
           </div>
+
+
+            <form action="{% url 'set_language' %}" method="post" class="language-switcher">
+      {% csrf_token %}
+      <select name="language" onchange="this.form.submit()">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% for lang_code, lang_name in LANGUAGES %}
+          <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>
+            {{ lang_name }}
+          </option>
+        {% endfor %}
+      </select>
+    </form>
 <!-- آیکون جست‌وجو فقط برای موبایل -->
 <button id="mobile-search-btn" class="mobile-search-btn" aria-label="جست‌وجو در سایت">
     <svg width="20" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -119,6 +133,7 @@
       <path d="M19.0635 18.5L22.5635 22" stroke="#6F7285" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
 </button>
+
 
 <!-- فرم اصلی جست‌وجو -->
 <form role="search" class="search-form" autocomplete="off">
@@ -139,18 +154,6 @@
 </form>
 
 
-        <form action="{% url 'set_language' %}" method="post" class="d-inline">
-  {% csrf_token %}
-  <select name="language" onchange="this.form.submit()">
-    {% get_current_language as LANGUAGE_CODE %}
-    {% get_available_languages as LANGUAGES %}
-    {% for lang_code, lang_name in LANGUAGES %}
-      <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>
-        {{ lang_name }}
-      </option>
-    {% endfor %}
-  </select>
-</form>
 
 
           <div class="menu-btns d-none d-lg-flex">
